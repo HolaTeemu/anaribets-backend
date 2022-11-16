@@ -3,7 +3,7 @@ const mongoose = require("mongoose");
 const url = process.env.MONGODB_URI;
 
 const usersSchema = new mongoose.Schema({
-  userName: String,
+  username: String,
   groups: Array,
   bets: Array,
   points: Number
