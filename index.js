@@ -3,14 +3,14 @@ const express = require("express");
 const morgan = require("morgan");
 const cors = require("cors");
 const gamesService = require("./services/gamesService");
-
-const Bets = require("./models/bets");
+const Group = require("./models/groups");
 const User = require("./models/users");
 const {
   parseUpcomingGamesData,
   parseResultsData,
   parseOngoingGamesData,
 } = require("./helpers/gamesHelpers");
+const { parseLeaderboardData } = require("./helpers/leaderboardHelpers");
 const app = express();
 
 app.use(express.json());
@@ -28,6 +28,7 @@ app.use(
   morgan(`:method :url :status :res[content-length] :response-time ms :body`)
 );
 
+// Get results of last nights games
 app.get("/api/results", (req, res) => {
   gamesService
     .getResults()
@@ -40,6 +41,7 @@ app.get("/api/results", (req, res) => {
     );
 });
 
+// Get upcoming games
 app.get("/api/upcoming", (req, res) => {
   const startDate = new Date().toISOString().split("T")[0];
   gamesService
@@ -53,6 +55,7 @@ app.get("/api/upcoming", (req, res) => {
     });
 });
 
+// Get ongoing games
 app.get("/api/ongoing", (req, res) => {
   const startDate = new Date().toISOString().split("T")[0];
   gamesService
@@ -118,6 +121,13 @@ app.post("/api/users", (req, res) => {
   });
 });
 
+// Get users
+app.get("/api/users", (req, res) => {
+  User.find({}).then((result) => {
+    return res.json(result);
+  });
+});
+
 // Add users bets
 app.post("/api/users/bets/:user", (req, res, next) => {
   const body = req.body;
@@ -175,7 +185,6 @@ const checkBets = async () => {
           betsAfterDeletion = betsAfterDeletion.filter(
             (bet) => bet.game !== result.gameId
           );
-          console.log(betsAfterDeletion);
         }
       });
       // console.log(
@@ -188,13 +197,70 @@ const checkBets = async () => {
           { new: true }
         )
           .then((updatedUser) => {
-            console.log(updatedUser);
+            console.log("Bets checked and points granted...");
           })
           .catch((error) => console.log(error.message));
       }
+      console.log("Bets checked but there was no points to grant");
     });
   });
 };
+
+// Get player's groups
+app.get("/api/users/:username", (req, res, next) => {
+  User.find({ username: req.params.username })
+    .then((result) => {
+      res.json(result[0].groups);
+    })
+    .catch((error) => next(error));
+});
+
+// Add player to the group
+app.post("/api/groups/:groupname", (req, res, next) => {
+  const body = req.body;
+
+  if (body.password === undefined) {
+    return res.status(400).json({ error: "Password is missing" });
+  }
+
+  User.findOne({ username: body.username }).then((result) => {
+    if (!result[0].groups.find((group) => group === groupname)) {
+      Group.findOneAndUpdate(
+        { groupname: req.params.groupname, password: body.password },
+        { $push: { players: result[0]._id } },
+        { new: true }
+      )
+        .then((updatedGroup) => {
+          console.log(updatedGroup);
+          User.findOneAndUpdate(
+            { username: body.username },
+            { $push: { groups: updatedGroup._id } },
+            { new: true }
+          )
+            .then((updatedUser) => {
+              console.log(updatedUser);
+            })
+            .catch((error) => console.log(error.message));
+        })
+        .catch((error) => console.log(error.message));
+    }
+  });
+});
+
+// Get group leaderboard
+app.get("/api/groups/:groupid", (req, res, next) => {
+  const id = req.params.groupid;
+  Group.findById(id)
+    .then((result) => {
+      const groupname = result.groupname;
+      User.find({ _id: { $in: result.players } })
+        .then((result) => {
+          const data = parseLeaderboardData(result);
+          res.json({groupname, players: data});
+      });
+    })
+    .catch((error) => next(error));
+});
 
 setInterval(checkBets, 3600000); // Check the bets once per hour
 
