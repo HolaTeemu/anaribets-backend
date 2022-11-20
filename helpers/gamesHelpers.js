@@ -7,10 +7,12 @@ const parseUpcomingGamesData = (data) => {
                 startTime: game.startTime,
                 homeAbbr: game.teams.home.abbreviation,
                 awayAbbr: game.teams.away.abbreviation,
+                homeCity: game.teams.home.locationName,
+                awayCity: game.teams.away.locationName,
             }
         )
     })
-    console.log(parsedData);
+    // console.log(parsedData);
     return parsedData;
 }
 
@@ -30,7 +32,7 @@ const parseOngoingGamesData = (data) => {
             }
         )
     })
-    console.log(parsedData);
+    // console.log(parsedData);
     return parsedData;
 }
 
@@ -48,6 +50,8 @@ const parseResultsData = (data) => {
                 startTime: game.startTime,
                 homeAbbr: homeAbbr,
                 awayAbbr: awayAbbr,
+                homeCity: game.teams.home.locationName,
+                awayCity: game.teams.away.locationName,
                 homeGoals: game.scores[homeAbbr],
                 awayGoals: game.scores[awayAbbr],
                 gameId: gameId,

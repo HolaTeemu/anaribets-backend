@@ -13,6 +13,7 @@ mongoose
 
 const usersSchema = new mongoose.Schema({
   username: String,
+  email: String,
   groups: Array,
   bets: Array,
   points: Number

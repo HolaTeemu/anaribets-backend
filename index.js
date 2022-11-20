@@ -1,4 +1,5 @@
 require("dotenv").config();
+const mongoose = require("mongoose");
 const express = require("express");
 const morgan = require("morgan");
 const cors = require("cors");
@@ -10,7 +11,10 @@ const {
   parseResultsData,
   parseOngoingGamesData,
 } = require("./helpers/gamesHelpers");
-const { parseLeaderboardData } = require("./helpers/leaderboardHelpers");
+const {
+  parseLeaderboardData,
+  parseUserData,
+} = require("./helpers/leaderboardHelpers");
 const app = express();
 
 app.use(express.json());
@@ -72,35 +76,6 @@ app.get("/api/ongoing", (req, res) => {
     });
 });
 
-// app.post("/api/bets/:user", (req, res) => {
-//   const body = req.body;
-
-//   if (body.betsList === undefined) {
-//     return res.status(400).json({ error: "Content missing"});
-//   }
-
-//   console.log(body.betsList[0]);
-
-//   const bet = new Bets({
-//     user: req.params.user.toLowerCase(),
-//     bets: body.betsList
-//   });
-
-//   bet.save().then(savedBets => {
-//     res.json(savedBets);
-//   })
-// })
-
-// app.get("/api/bets/:user", (req, res) => {
-
-//   Bets.find({user: req.params.user}).then(bets => {
-//     if (bets.length === 0) {
-//       return res.json({bets: []});
-//     }
-//     res.json(bets[0]);
-//   })
-// })
-
 // Create new user
 app.post("/api/users", (req, res) => {
   const body = req.body;
@@ -109,8 +84,13 @@ app.post("/api/users", (req, res) => {
     return res.status(400).json({ error: "Username is missing" });
   }
 
+  if (body.email === undefined) {
+    return res.status(400).json({ error: "Email is missing" });
+  }
+
   const user = new User({
     username: body.username.toLowerCase(),
+    email: body.email,
     groups: [],
     bets: [],
     points: 0,
@@ -128,16 +108,37 @@ app.get("/api/users", (req, res) => {
   });
 });
 
+// Check if user exists
+app.get("/api/users/exist/:email", (req, res, next) => {
+  const email = req.params.email;
+
+  User.find({ email: email })
+    .then((result) => {
+      if (result.length > 0) {
+        return res.json({
+          id: result[0]._id,
+          username: result[0].username,
+        });
+      } else {
+        return res.json([]);
+      }
+    })
+    .catch((error) => {
+      next(error);
+    });
+});
+
 // Add users bets
-app.post("/api/users/bets/:user", (req, res, next) => {
+app.post("/api/users/bets/:userId", (req, res, next) => {
   const body = req.body;
+  const id = req.params.userId;
 
   if (body.bets === undefined) {
     return res.status(400).json({ error: "Bets are missing" });
   }
 
   User.findOneAndUpdate(
-    { username: req.params.user },
+    { _id: id },
     { $push: { bets: { $each: body.bets } } },
     { new: true }
   )
@@ -148,8 +149,10 @@ app.post("/api/users/bets/:user", (req, res, next) => {
 });
 
 // Get user bets
-app.get("/api/users/bets/:user", (req, res) => {
-  User.find({ username: req.params.user }).then((user) => {
+app.get("/api/users/bets/:userId", (req, res) => {
+  const id = req.params.userId;
+
+  User.find({ _id: id }).then((user) => {
     const bets = user[0].bets;
     if (bets.length === 0) {
       return res.json(bets);
@@ -187,63 +190,113 @@ const checkBets = async () => {
           );
         }
       });
-      // console.log(
-      //   `${user.username} had ${user.points} points but got ${points} points last night`
-      // );
       if (points !== 0) {
         User.findOneAndUpdate(
-          { username: user.username },
+          { _id: user._id },
           { points: user.points + points, bets: betsAfterDeletion },
           { new: true }
         )
           .then((updatedUser) => {
-            console.log("Bets checked and points granted...");
+            // console.log("Bets checked and points granted...");
           })
           .catch((error) => console.log(error.message));
       }
-      console.log("Bets checked but there was no points to grant");
+      // console.log("Bets checked but there was no points to grant");
     });
   });
 };
 
 // Get player's groups
-app.get("/api/users/:username", (req, res, next) => {
-  User.find({ username: req.params.username })
+app.get("/api/users/:userId", (req, res, next) => {
+  const id = req.params.userId;
+
+  User.findById(id)
     .then((result) => {
-      res.json(result[0].groups);
+      res.json(result.groups);
     })
     .catch((error) => next(error));
 });
 
 // Add player to the group
-app.post("/api/groups/:groupname", (req, res, next) => {
+app.post("/api/groups/join/:groupname", (req, res, next) => {
   const body = req.body;
+  const groupname = req.params.groupname;
+
+  if (body.userId === undefined) {
+    return res.status(400).json({ error: "User id is missing" });
+  }
 
   if (body.password === undefined) {
     return res.status(400).json({ error: "Password is missing" });
   }
 
-  User.findOne({ username: body.username }).then((result) => {
-    if (!result[0].groups.find((group) => group === groupname)) {
-      Group.findOneAndUpdate(
-        { groupname: req.params.groupname, password: body.password },
-        { $push: { players: result[0]._id } },
-        { new: true }
-      )
-        .then((updatedGroup) => {
-          console.log(updatedGroup);
-          User.findOneAndUpdate(
-            { username: body.username },
-            { $push: { groups: updatedGroup._id } },
-            { new: true }
-          )
-            .then((updatedUser) => {
-              console.log(updatedUser);
-            })
-            .catch((error) => console.log(error.message));
-        })
-        .catch((error) => console.log(error.message));
-    }
+  User.findById(body.userId).then((result) => {
+    Group.findOne({ groupname: req.params.groupname })
+      .then((result) => {
+        if (result) {
+          result.comparePassword(
+            body.password,
+            result.password,
+            (matchError, isMatch) => {
+              if (matchError || !isMatch) {
+                return res.status(401).json({ error: "Password incorrect" });
+              } else {
+                Group.findOneAndUpdate(
+                  { groupname: req.params.groupname },
+                  { $push: { players: body.userId } },
+                  { new: true }
+                )
+                  .then((updatedGroup) => {
+                    User.findOneAndUpdate(
+                      { _id: body.userId },
+                      { $push: { groups: updatedGroup._id } },
+                      { new: true }
+                    )
+                      .then((updatedUser) => {
+                        res.json({ groupId: updatedGroup._id });
+                      })
+                      .catch((error) => console.log(error.message));
+                  })
+                  .catch((error) => console.log(error.message));
+              }
+            }
+          );
+        } else {
+          return res.status(404).json({ error: "Group not found" });
+        }
+      })
+      .catch((error) => next(error));
+  });
+});
+
+// Create new group
+app.post("/api/groups/create", (req, res, next) => {
+  const body = req.body;
+  const id = mongoose.Types.ObjectId(body.userId);
+
+  if (!body.groupname) {
+    return res.status(400).json({ error: "Groupname is missing" });
+  }
+
+  if (!body.password) {
+    return res.status(400).json({ error: "Password is missing" });
+  }
+
+  const group = new Group({
+    groupname: body.groupname,
+    password: body.password,
+    admin: id,
+    players: [id],
+  });
+
+  group.save().then((savedGroup) => {
+    User.findByIdAndUpdate(
+      id,
+      { $push: { groups: group._id } },
+      { new: true }
+    ).then((result) => {
+      res.json({ groupId: savedGroup._id });
+    });
   });
 });
 
@@ -253,13 +306,26 @@ app.get("/api/groups/:groupid", (req, res, next) => {
   Group.findById(id)
     .then((result) => {
       const groupname = result.groupname;
-      User.find({ _id: { $in: result.players } })
-        .then((result) => {
-          const data = parseLeaderboardData(result);
-          res.json({groupname, players: data});
+      User.find({ _id: { $in: result.players } }).then((result) => {
+        const data = parseLeaderboardData(result);
+        res.json({ groupname, players: data });
       });
     })
     .catch((error) => next(error));
+});
+
+// Change username
+app.post("/api/users/:userId", (req, res, next) => {
+  const body = req.body;
+  const userId = req.params.userId;
+
+  User.findByIdAndUpdate(
+    userId,
+    { username: body.newUsername },
+    { new: true }
+  ).then((user) => {
+    res.json(user);
+  });
 });
 
 setInterval(checkBets, 3600000); // Check the bets once per hour
