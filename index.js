@@ -220,7 +220,7 @@ app.get("/api/users/:userId", (req, res, next) => {
 // Add player to the group
 app.post("/api/groups/join/:groupname", (req, res, next) => {
   const body = req.body;
-  const groupname = req.params.groupname;
+  const groupname = req.params.groupname.toLowerCase();
 
   if (body.userId === undefined) {
     return res.status(400).json({ error: "User id is missing" });
@@ -231,7 +231,7 @@ app.post("/api/groups/join/:groupname", (req, res, next) => {
   }
 
   User.findById(body.userId).then((result) => {
-    Group.findOne({ groupname: req.params.groupname })
+    Group.findOne({ groupname: groupname })
       .then((result) => {
         if (result) {
           result.comparePassword(
@@ -241,9 +241,10 @@ app.post("/api/groups/join/:groupname", (req, res, next) => {
               if (matchError || !isMatch) {
                 return res.status(401).json({ error: "Password incorrect" });
               } else {
+                const playersObjectId = mongoose.Types.ObjectId(body.userId);
                 Group.findOneAndUpdate(
-                  { groupname: req.params.groupname },
-                  { $push: { players: body.userId } },
+                  { groupname: groupname },
+                  { $push: { players: playersObjectId } },
                   { new: true }
                 )
                   .then((updatedGroup) => {
@@ -283,7 +284,7 @@ app.post("/api/groups/create", (req, res, next) => {
   }
 
   const group = new Group({
-    groupname: body.groupname,
+    groupname: body.groupname.toLowerCase(),
     password: body.password,
     admin: id,
     players: [id],
