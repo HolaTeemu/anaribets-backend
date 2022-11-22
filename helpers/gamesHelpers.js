@@ -56,6 +56,8 @@ const parseResultsData = (data) => {
                 awayGoals: game.scores[awayAbbr],
                 gameId: gameId,
                 winner: game.scores[homeAbbr] > game.scores[awayAbbr] ? homeAbbr : awayAbbr,
+                overtime: game.scores.overtime,
+                shootout: game.scores.shootout,
             }
         )
     })
