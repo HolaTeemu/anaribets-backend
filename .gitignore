@@ -1,2 +1,5 @@
 .env
 node_modules
+testidata_ongoing.json
+testidata_results.json
+testidata_upcoming.json

@@ -27,6 +27,9 @@ morgan.token("body", (req, res) => {
   }
   return;
 });
+const testidata_upcoming = require("./testidata_upcoming.json");
+const testidata_ongoing = require("./testidata_ongoing.json");
+const testidata_results = require("./testidata_results.json");
 
 app.use(
   morgan(`:method :url :status :res[content-length] :response-time ms :body`)
@@ -37,6 +40,7 @@ app.get("/api/results", (req, res) => {
   gamesService
     .getResults()
     .then((response) => {
+      // const data = parseResultsData(testidata_results.games); // testidata
       const data = parseResultsData(response.data.games);
       res.json(data);
     })
@@ -51,8 +55,13 @@ app.get("/api/upcoming", (req, res) => {
   gamesService
     .getUpcomingGames(startDate)
     .then((response) => {
-      const data = parseUpcomingGamesData(response.data[0].games);
-      res.json(data);
+      if (response.data.length === 0) {
+        //const data = parseUpcomingGamesData(testidata_upcoming[0].games); // testidata
+        res.json(response.data);
+      } else {
+        const data = parseUpcomingGamesData(response.data[0].games);
+        res.json(data);
+      }
     })
     .catch((error) => {
       console.log(`Error fetching the upcoming games - ${error.message}`);
@@ -65,10 +74,8 @@ app.get("/api/ongoing", (req, res) => {
   gamesService
     .getUpcomingGames(startDate)
     .then((response) => {
-      const liveGames = response.data[0].games.filter(
-        (game) => game.status.state === "LIVE"
-      );
-      const data = parseOngoingGamesData(liveGames);
+      //const data = parseOngoingGamesData(testidata_ongoing[0].games); // testidata
+      const data = parseOngoingGamesData(response.data[0].games);
       res.json(data);
     })
     .catch((error) => {
@@ -168,7 +175,7 @@ const checkBets = async () => {
   const results = await gamesService
     .getResults()
     .then((response) => {
-      return parseResultsData(response.data.games);
+      return parseResultsData(endedGames);
     })
     .catch((error) =>
       console.log(`Error fetching the results - ${error.message}`)
