@@ -40,9 +40,13 @@ app.get("/api/results", (req, res) => {
   gamesService
     .getResults()
     .then((response) => {
-      // const data = parseResultsData(testidata_results.games); // testidata
-      const data = parseResultsData(response.data.games);
-      res.json(data);
+      if (response.data.length === 0) {
+        res.json(response.data);
+      } else {
+        // const data = parseResultsData(testidata_results.games); // testidata
+        const data = parseResultsData(response.data.games);
+        res.json(data);
+      }
     })
     .catch((error) =>
       console.log(`Error fetching the results - ${error.message}`)
@@ -56,9 +60,9 @@ app.get("/api/upcoming", (req, res) => {
     .getUpcomingGames(startDate)
     .then((response) => {
       if (response.data.length === 0) {
-        //const data = parseUpcomingGamesData(testidata_upcoming[0].games); // testidata
         res.json(response.data);
       } else {
+        //const data = parseUpcomingGamesData(testidata_upcoming[0].games); // testidata
         const data = parseUpcomingGamesData(response.data[0].games);
         res.json(data);
       }
@@ -74,9 +78,13 @@ app.get("/api/ongoing", (req, res) => {
   gamesService
     .getUpcomingGames(startDate)
     .then((response) => {
-      //const data = parseOngoingGamesData(testidata_ongoing[0].games); // testidata
-      const data = parseOngoingGamesData(response.data[0].games);
-      res.json(data);
+      if (response.data.length === 0) {
+        res.json(response.data);
+      } else {
+        //const data = parseOngoingGamesData(testidata_ongoing[0].games); // testidata
+        const data = parseOngoingGamesData(response.data[0].games);
+        res.json(data);
+      }
     })
     .catch((error) => {
       console.log(`Error fetching the ongoing games - ${error.message}`);
