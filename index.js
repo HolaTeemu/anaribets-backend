@@ -190,8 +190,8 @@ const checkBets = async () => {
   const results = await gamesService
     .getResults()
     .then((response) => {
-      return parseResultsData(testidata_results.games);
-      // return parseResultsData(response.data.games);
+      // return parseResultsData(testidata_results.games);
+      return parseResultsData(response.data.games);
     })
     .catch((error) =>
       console.log(`Error fetching the results - ${error.message}`)
