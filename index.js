@@ -27,9 +27,9 @@ morgan.token("body", (req, res) => {
   }
   return;
 });
-// const testidata_upcoming = require("./testidata_upcoming.json");
-// const testidata_ongoing = require("./testidata_ongoing.json");
-// const testidata_results = require("./testidata_results.json");
+//const testidata_upcoming = require("./testidata_upcoming.json"); // testidata
+//const testidata_ongoing = require("./testidata_ongoing.json"); // testidata
+//const testidata_results = require("./testidata_results.json"); // testidata
 
 app.use(
   morgan(`:method :url :status :res[content-length] :response-time ms :body`)
@@ -40,10 +40,13 @@ app.get("/api/results", (req, res) => {
   gamesService
     .getResults()
     .then((response) => {
+      console.log(response);
       if (response.data.length === 0) {
+        //const data = parseResultsData(testidata_results.games); // testidata
+        //res.json(data); // testidata
         res.json(response.data);
       } else {
-        // const data = parseResultsData(testidata_results.games); // testidata
+        //const data = parseResultsData(testidata_results.games); // testidata
         const data = parseResultsData(response.data.games);
         res.json(data);
       }
@@ -60,6 +63,8 @@ app.get("/api/upcoming", (req, res) => {
     .getUpcomingGames(startDate)
     .then((response) => {
       if (response.data.length === 0) {
+        //const data = parseUpcomingGamesData(testidata_upcoming[0].games); // testidata
+        //res.json(data); //testidata
         res.json(response.data);
       } else {
         //const data = parseUpcomingGamesData(testidata_upcoming[0].games); // testidata
@@ -79,6 +84,8 @@ app.get("/api/ongoing", (req, res) => {
     .getUpcomingGames(startDate)
     .then((response) => {
       if (response.data.length === 0) {
+        //const data = parseOngoingGamesData(testidata_ongoing[0].games); // testidata
+        //res.json(data); //testidata
         res.json(response.data);
       } else {
         //const data = parseOngoingGamesData(testidata_ongoing[0].games); // testidata
@@ -183,42 +190,45 @@ const checkBets = async () => {
   const results = await gamesService
     .getResults()
     .then((response) => {
-      return parseResultsData(endedGames);
+      return parseResultsData(testidata_results.games);
+      // return parseResultsData(response.data.games);
     })
     .catch((error) =>
       console.log(`Error fetching the results - ${error.message}`)
     );
-
-  User.find({}).then((result) => {
-    result.forEach((user) => {
-      const bets = user.bets;
-      let points = 0;
-      let betsAfterDeletion = user.bets;
-      bets.forEach((game, i) => {
-        const result = results.find((result) => result.gameId === game.game);
-        if (result) {
-          if (result.winner === game.bet) {
-            points++;
+  console.log(results);
+  if (results.length > 0) {
+    User.find({}).then((result) => {
+      result.forEach((user) => {
+        const bets = user.bets;
+        let points = 0;
+        let betsAfterDeletion = user.bets;
+        bets.forEach((game, i) => {
+          const result = results.find((result) => result.gameId === game.game);
+          if (result) {
+            if (result.winner === game.bet) {
+              points++;
+            }
+            betsAfterDeletion = betsAfterDeletion.filter(
+              (bet) => bet.game !== result.gameId
+            );
           }
-          betsAfterDeletion = betsAfterDeletion.filter(
-            (bet) => bet.game !== result.gameId
-          );
+        });
+        if (points !== 0) {
+          User.findOneAndUpdate(
+            { _id: user._id },
+            { points: user.points + points, bets: betsAfterDeletion },
+            { new: true }
+          )
+            .then((updatedUser) => {
+              // console.log("Bets checked and points granted...");
+            })
+            .catch((error) => console.log(error.message));
         }
+        // console.log("Bets checked but there was no points to grant");
       });
-      if (points !== 0) {
-        User.findOneAndUpdate(
-          { _id: user._id },
-          { points: user.points + points, bets: betsAfterDeletion },
-          { new: true }
-        )
-          .then((updatedUser) => {
-            // console.log("Bets checked and points granted...");
-          })
-          .catch((error) => console.log(error.message));
-      }
-      // console.log("Bets checked but there was no points to grant");
     });
-  });
+  }
 };
 
 // Get player's groups
