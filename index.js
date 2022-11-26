@@ -40,7 +40,6 @@ app.get("/api/results", (req, res) => {
   gamesService
     .getResults()
     .then((response) => {
-      console.log(response);
       if (response.data.length === 0) {
         //const data = parseResultsData(testidata_results.games); // testidata
         //res.json(data); // testidata
@@ -196,7 +195,7 @@ const checkBets = async () => {
     .catch((error) =>
       console.log(`Error fetching the results - ${error.message}`)
     );
-  console.log(results);
+
   if (results.length > 0) {
     User.find({}).then((result) => {
       result.forEach((user) => {
