@@ -213,17 +213,15 @@ const checkBets = async () => {
             );
           }
         });
-        if (points !== 0) {
-          User.findOneAndUpdate(
-            { _id: user._id },
-            { points: user.points + points, bets: betsAfterDeletion },
-            { new: true }
-          )
-            .then((updatedUser) => {
-              // console.log("Bets checked and points granted...");
-            })
-            .catch((error) => console.log(error.message));
-        }
+        User.findOneAndUpdate(
+          { _id: user._id },
+          { points: user.points + points, bets: betsAfterDeletion },
+          { new: true }
+        )
+          .then((updatedUser) => {
+            // console.log("Bets checked and points granted...");
+          })
+          .catch((error) => console.log(error.message));
         // console.log("Bets checked but there was no points to grant");
       });
     });
