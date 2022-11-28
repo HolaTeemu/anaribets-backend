@@ -1,6 +1,9 @@
 const parseUpcomingGamesData = (data) => {
   let parsedData = [];
   data.forEach((game) => {
+    const gameId = `${game.teams.away.abbreviation}${
+      game.teams.home.abbreviation
+    }${game.startTime.split("T")[0]}`;
     if (game.status.state === "PREVIEW") {
       parsedData = parsedData.concat({
         status: game.status.state,
@@ -9,6 +12,7 @@ const parseUpcomingGamesData = (data) => {
         awayAbbr: game.teams.away.abbreviation,
         homeCity: game.teams.home.locationName,
         awayCity: game.teams.away.locationName,
+        gameId: gameId,
       });
     }
   });

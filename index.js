@@ -6,6 +6,7 @@ const cors = require("cors");
 const gamesService = require("./services/gamesService");
 const Group = require("./models/groups");
 const User = require("./models/users");
+const Result = require("./models/results");
 const {
   parseUpcomingGamesData,
   parseResultsData,
@@ -47,6 +48,16 @@ app.get("/api/results", (req, res) => {
       } else {
         //const data = parseResultsData(testidata_results.games); // testidata
         const data = parseResultsData(response.data.games);
+        data.forEach((game) => {
+          console.log(game);
+          Result.findOneAndUpdate(
+            { gameId: game.gameId, result: "" },
+            { result: game.winner },
+            { new: true }
+          ).then((updatedResult) => {
+            console.log(updatedResult);
+          });
+        });
         res.json(data);
       }
     })
@@ -68,6 +79,25 @@ app.get("/api/upcoming", (req, res) => {
       } else {
         //const data = parseUpcomingGamesData(testidata_upcoming[0].games); // testidata
         const data = parseUpcomingGamesData(response.data[0].games);
+
+        data.forEach((game) => {
+          const result = new Result({
+            gameId: game.gameId,
+            result: "",
+            bets: [],
+          });
+
+          Result.findOne({ gameId: game.gameId }).then((res) => {
+            if (!res) {
+              result
+                .save()
+                .then((savedResult) => {
+                  // console.log(savedResult);
+                })
+                .catch((error) => next(error));
+            }
+          });
+        });
         res.json(data);
       }
     })
@@ -164,6 +194,17 @@ app.post("/api/users/bets/:userId", (req, res, next) => {
     { new: true }
   )
     .then((updatedUser) => {
+      updatedUser.bets.forEach((bet) => {
+        Result.findOneAndUpdate(
+          { gameId: bet.game, "bets.playerId": { $ne: id } },
+          { $push: { bets: { ...bet, playerId: id } } },
+          { new: true }
+        )
+          .then((singleResult) => {
+            // console.log(singleResult);
+          })
+          .catch((error) => next(error));
+      });
       res.json(updatedUser);
     })
     .catch((error) => next(error));
@@ -227,6 +268,33 @@ const checkBets = async () => {
     });
   }
 };
+
+// Get user's bets from last night
+app.post("/api/results/:userId", (req, res, next) => {
+  const body = req.body;
+  const id = req.params.userId;
+
+  if (body.gameIds === undefined) {
+    return res.status(400).json({ error: "Game ids are missing" });
+  }
+
+  const gameIds = req.body.gameIds;
+  
+  Result.find({ gameId: { $in: gameIds }, result: { $ne: "" } }).then(
+    (foundResultDocuments) => {
+      Result.find({ "bets.playerId": id })
+        .then((foundResults) => {
+          let bets = [];
+          foundResults.forEach((resDoc) => {
+            const foundBet = resDoc.bets.find((el) => el.playerId === id);
+            bets = [...bets, { game: foundBet.game, bet: foundBet.bet }];
+          });
+          res.json(bets);
+        })
+        .catch((error) => next(error));
+    }
+  );
+});
 
 // Get player's groups
 app.get("/api/users/:userId", (req, res, next) => {
