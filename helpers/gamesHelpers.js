@@ -22,19 +22,23 @@ const parseUpcomingGamesData = (data) => {
 const parseOngoingGamesData = (data) => {
   let parsedData = [];
   data.forEach((game) => {
+    const homeAbbr = game.teams.home.abbreviation;
+    const awayAbbr = game.teams.away.abbreviation;
+    const gameId = `${awayAbbr}${homeAbbr}${game.startTime.split("T")[0]}`;
     if (game.status.state === "LIVE") {
       parsedData = parsedData.concat({
         status: game.status.state,
         startTime: game.startTime,
-        homeAbbr: game.teams.home.abbreviation,
-        awayAbbr: game.teams.away.abbreviation,
-        homeGoals: game.scores[game.teams.home.abbreviation],
-        awayGoals: game.scores[game.teams.away.abbreviation],
+        homeAbbr: homeAbbr,
+        awayAbbr: awayAbbr,
+        homeGoals: game.scores[homeAbbr],
+        awayGoals: game.scores[awayAbbr],
         homeCity: game.teams.home.locationName,
         awayCity: game.teams.away.locationName,
         currentPeriod: game.status.progress.currentPeriodOrdinal,
         currentPeriodTimeLeft:
           game.status.progress.currentPeriodTimeRemaining.pretty,
+        gameId: gameId,
       });
     }
   });

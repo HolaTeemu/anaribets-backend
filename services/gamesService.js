@@ -6,8 +6,8 @@ const getResults = () => {
     return axios.get(`${baseUrl}/scores/latest`);
 }
 
-const getUpcomingGames = (startDate) => {
-    return axios.get(`${baseUrl}/scores?startDate=${startDate}&endDate=${startDate}`);
+const getUpcomingGames = (endDate, startDate = endDate) => {
+    return axios.get(`${baseUrl}/scores?startDate=${startDate}&endDate=${endDate}`);
 }
 
 // eslint-disable-next-line import/no-anonymous-default-export

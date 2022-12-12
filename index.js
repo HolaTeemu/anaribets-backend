@@ -49,13 +49,12 @@ app.get("/api/results", (req, res) => {
         //const data = parseResultsData(testidata_results.games); // testidata
         const data = parseResultsData(response.data.games);
         data.forEach((game) => {
-          console.log(game);
           Result.findOneAndUpdate(
             { gameId: game.gameId, result: "" },
             { result: game.winner },
             { new: true }
           ).then((updatedResult) => {
-            console.log(updatedResult);
+            // console.log(updatedResult);
           });
         });
         res.json(data);
@@ -68,7 +67,8 @@ app.get("/api/results", (req, res) => {
 
 // Get upcoming games
 app.get("/api/upcoming", (req, res) => {
-  const startDate = new Date().toISOString().split("T")[0];
+  const today = new Date()
+  const startDate = today.toISOString().split("T")[0];
   gamesService
     .getUpcomingGames(startDate)
     .then((response) => {
@@ -108,9 +108,16 @@ app.get("/api/upcoming", (req, res) => {
 
 // Get ongoing games
 app.get("/api/ongoing", (req, res) => {
-  const startDate = new Date().toISOString().split("T")[0];
+  const today = new Date()
+  const yesterday = new Date(today)
+
+  yesterday.setDate(yesterday.getDate() - 1)
+  yesterday.toDateString()
+
+  const startDate = yesterday.toISOString().split("T")[0];
+  const endDate = today.toISOString().split("T")[0];
   gamesService
-    .getUpcomingGames(startDate)
+    .getUpcomingGames(endDate, startDate)
     .then((response) => {
       if (response.data.length === 0) {
         //const data = parseOngoingGamesData(testidata_ongoing[0].games); // testidata
@@ -279,7 +286,7 @@ app.post("/api/results/:userId", (req, res, next) => {
   }
 
   const gameIds = req.body.gameIds;
-  
+
   Result.find({ gameId: { $in: gameIds }, result: { $ne: "" } }).then(
     (foundResultDocuments) => {
       Result.find({ "bets.playerId": id })
