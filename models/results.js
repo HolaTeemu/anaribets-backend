@@ -4,6 +4,7 @@ const resultsSchema = new mongoose.Schema({
   gameId: String,
   result: String,
   bets: Array,
+  highlightReel: String,
 });
 
 resultsSchema.set("toJSON", {

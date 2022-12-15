@@ -16,6 +16,8 @@ const {
   parseLeaderboardData,
   parseUserData,
 } = require("./helpers/leaderboardHelpers");
+const YOUTUBE_API_KEY = process.env.API_KEY_YT;
+const YTSearch = require("youtube-api-search");
 const app = express();
 
 app.use(express.json());
@@ -67,7 +69,7 @@ app.get("/api/results", (req, res) => {
 
 // Get upcoming games
 app.get("/api/upcoming", (req, res) => {
-  const today = new Date()
+  const today = new Date();
   const startDate = today.toISOString().split("T")[0];
   gamesService
     .getUpcomingGames(startDate)
@@ -108,14 +110,18 @@ app.get("/api/upcoming", (req, res) => {
 
 // Get ongoing games
 app.get("/api/ongoing", (req, res) => {
-  const today = new Date()
-  const yesterday = new Date(today)
+  const yesterday = new Date();
+  const tomorrow = new Date();
 
-  yesterday.setDate(yesterday.getDate() - 1)
-  yesterday.toDateString()
+  yesterday.setDate(yesterday.getDate() - 1);
+  yesterday.toDateString();
+
+  tomorrow.setDate(tomorrow.getDate() + 1);
+  tomorrow.toDateString();
 
   const startDate = yesterday.toISOString().split("T")[0];
-  const endDate = today.toISOString().split("T")[0];
+  const endDate = tomorrow.toISOString().split("T")[0];
+
   gamesService
     .getUpcomingGames(endDate, startDate)
     .then((response) => {
@@ -294,7 +300,14 @@ app.post("/api/results/:userId", (req, res, next) => {
           let bets = [];
           foundResults.forEach((resDoc) => {
             const foundBet = resDoc.bets.find((el) => el.playerId === id);
-            bets = [...bets, { game: foundBet.game, bet: foundBet.bet }];
+            bets = [
+              ...bets,
+              {
+                game: foundBet.game,
+                bet: foundBet.bet,
+                highlightReel: resDoc.highlightReel,
+              },
+            ];
           });
           res.json(bets);
         })
@@ -426,7 +439,79 @@ app.post("/api/users/:userId", (req, res, next) => {
   });
 });
 
+const checkHighlightVideo = () => {
+  gamesService
+    .getResults()
+    .then((response) => {
+      if (response.data.games.length > 0) {
+        //const data = parseResultsData(testidata_results.games); // testidata
+        const data = parseResultsData(response.data.games);
+
+        data.forEach((game) => {
+          const month = new Date(game.startTime).toLocaleString("default", {
+            month: "long",
+          });
+          const date = new Date(game.startTime).getDate() - 1;
+          const year = new Date(game.startTime).getFullYear();
+
+          const searchTerm = `NHL Highlights | ${game.awayTeamName} vs. ${game.homeTeamName} - ${month} ${date}, ${year}`;
+
+          Result.findOne({ gameId: game.gameId, highlightReel: "" })
+            .then((result) => {
+              if (result) {
+                YTSearch(
+                  { key: YOUTUBE_API_KEY, term: searchTerm },
+                  (videos) => {
+                    const video = videos[0];
+                    if (video.snippet.title === searchTerm) {
+                      const highlightReelLink = `https://www.youtube.com/watch?v=${video.id.videoId}`;
+                      Result.findOneAndUpdate(
+                        { gameId: result.gameId, highlightReel: "" },
+                        { highlightReel: highlightReelLink },
+                        { new: true }
+                      )
+                        .then((updatedResult) => {
+                          // console.log(updatedResult);
+                        })
+                        .catch((error) => {
+                          console.log(error);
+                        });
+                    }
+                  }
+                );
+              }
+            })
+            .catch((error) => {
+              console.log(error);
+            });
+        });
+      }
+    })
+    .catch((error) =>
+      console.log(`Error fetching the results - ${error.message}`)
+    );
+};
+
 setInterval(checkBets, 3600000); // Check the bets once per hour
+
+let now = new Date();
+let millisUntilNineAM =
+  new Date(now.getFullYear(), now.getMonth(), now.getDate(), 14, 00, 0, 0) -
+  now;
+millisUntilNineAM < 0 &&
+  (millisUntilNineAM =
+    new Date(
+      now.getFullYear(),
+      now.getMonth(),
+      now.getDate() + 1,
+      07,
+      00,
+      0,
+      0
+    ) - now);
+setTimeout(() => {
+  setInterval(checkHighlightVideo, 86400000); // Check the highlight reels once per two hour
+}, millisUntilNineAM);
 
 /* final catch-all route to index.html defined last */
 app.get("/*", (req, res) => {
