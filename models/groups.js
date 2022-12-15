@@ -29,7 +29,7 @@ groupsSchema.pre("save", function (next) {
           if (hashError) {
             return next(hashError)
           }
-          console.log(hash);
+          // console.log(hash);
           group.password = hash
           next()
         })
