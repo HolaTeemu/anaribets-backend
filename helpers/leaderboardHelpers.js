@@ -4,6 +4,7 @@ const parseLeaderboardData = (data) => {
     parsedData = parsedData.concat({
       username: player.username,
       points: player.points,
+      totalBets: player.totalBets,
     });
   });
 

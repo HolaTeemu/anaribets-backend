@@ -16,15 +16,16 @@ const usersSchema = new mongoose.Schema({
   email: String,
   groups: Array,
   bets: Array,
-  points: Number
+  points: Number,
+  totalBets: Number,
 });
 
 usersSchema.set("toJSON", {
   transform: (document, returnedObject) => {
-    returnedObject.id = returnedObject._id.toString()
-    delete returnedObject._id
-    delete returnedObject.__v
-  }
-})
+    returnedObject.id = returnedObject._id.toString();
+    delete returnedObject._id;
+    delete returnedObject.__v;
+  },
+});
 
 module.exports = mongoose.model("users", usersSchema);

@@ -255,6 +255,7 @@ const checkBets = async () => {
       result.forEach((user) => {
         const bets = user.bets;
         let points = 0;
+        let totalBets = user.totalBets;
         let betsAfterDeletion = user.bets;
         bets.forEach((game, i) => {
           const result = results.find((result) => result.gameId === game.game);
@@ -262,6 +263,7 @@ const checkBets = async () => {
             if (result.winner === game.bet) {
               points++;
             }
+            totalBets++;
             betsAfterDeletion = betsAfterDeletion.filter(
               (bet) => bet.game !== result.gameId
             );
@@ -269,7 +271,11 @@ const checkBets = async () => {
         });
         User.findOneAndUpdate(
           { _id: user._id },
-          { points: user.points + points, bets: betsAfterDeletion },
+          {
+            points: user.points + points,
+            bets: betsAfterDeletion,
+            totalBets: totalBets,
+          },
           { new: true }
         )
           .then((updatedUser) => {
