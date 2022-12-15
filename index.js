@@ -496,7 +496,7 @@ setInterval(checkBets, 3600000); // Check the bets once per hour
 
 let now = new Date();
 let millisUntilNineAM =
-  new Date(now.getFullYear(), now.getMonth(), now.getDate(), 14, 00, 0, 0) -
+  new Date(now.getFullYear(), now.getMonth(), now.getDate(), 09, 00, 0, 0) -
   now;
 millisUntilNineAM < 0 &&
   (millisUntilNineAM =
