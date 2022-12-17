@@ -131,7 +131,7 @@ app.get("/api/ongoing", (req, res) => {
         res.json(response.data);
       } else {
         //const data = parseOngoingGamesData(testidata_ongoing[0].games); // testidata
-        const data = parseOngoingGamesData(response.data[0].games);
+        const data = parseOngoingGamesData(response.data);
         res.json(data);
       }
     })
@@ -158,6 +158,7 @@ app.post("/api/users", (req, res) => {
     groups: [],
     bets: [],
     points: 0,
+    totalBets: 0,
   });
 
   user.save().then((savedUser) => {
