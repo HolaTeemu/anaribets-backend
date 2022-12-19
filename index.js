@@ -31,7 +31,7 @@ morgan.token("body", (req, res) => {
   return;
 });
 //const testidata_upcoming = require("./testidata_upcoming.json"); // testidata
-//const testidata_ongoing = require("./testidata_ongoing.json"); // testidata
+// const testidata_ongoing = require("./testidata_ongoing.json"); // testidata
 //const testidata_results = require("./testidata_results.json"); // testidata
 
 app.use(
@@ -126,11 +126,11 @@ app.get("/api/ongoing", (req, res) => {
     .getUpcomingGames(endDate, startDate)
     .then((response) => {
       if (response.data.length === 0) {
-        //const data = parseOngoingGamesData(testidata_ongoing[0].games); // testidata
-        //res.json(data); //testidata
+        // const data = parseOngoingGamesData(testidata_ongoing); // testidata
+        // res.json(data); //testidata
         res.json(response.data);
       } else {
-        //const data = parseOngoingGamesData(testidata_ongoing[0].games); // testidata
+        // const data = parseOngoingGamesData(testidata_ongoing); // testidata
         const data = parseOngoingGamesData(response.data);
         res.json(data);
       }
