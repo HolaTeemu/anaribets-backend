@@ -231,9 +231,50 @@ app.get("/api/users/bets/:userId", (req, res) => {
   User.find({ _id: id }).then((user) => {
     const bets = user[0].bets;
     if (bets.length === 0) {
-      return res.json(bets);
+      return res.json([]);
     }
     res.json(bets);
+  });
+});
+
+// Get bet percentages
+app.get("/api/bets/amounts/:userId", (req, res) => {
+  const id = req.params.userId;
+
+  User.find({ _id: id }).then((user) => {
+    const bets = user[0].bets;
+    if (bets.length === 0) {
+      return res.json([]);
+    }
+
+    const gameIds = bets.map((bet) => bet.game);
+
+    Result.find({ gameId: { $in: gameIds } })
+      .then((foundResultDocuments) => {
+        let betAmounts = [];
+        foundResultDocuments.forEach((result) => {
+          const homeAbbr = result.gameId.substring(3, 6);
+          const awayAbbr = result.gameId.substring(0, 3);
+          let obj = {
+            gameId: result.gameId,
+            [homeAbbr]: 0,
+            [awayAbbr]: 0,
+          };
+
+          result.bets.forEach((bet) => {
+            if (bet.bet === homeAbbr) {
+              obj[homeAbbr] += 1;
+            } else {
+              obj[awayAbbr] += 1;
+            }
+          });
+          betAmounts = [...betAmounts, obj];
+        });
+        res.json(betAmounts);
+      })
+      .catch((error) =>
+        console.log(`Error fetching the bet amounts - ${error.message}`)
+      );
   });
 });
 
