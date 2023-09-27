@@ -30,6 +30,12 @@ morgan.token("body", (req, res) => {
   }
   return;
 });
+
+const testidataUpcoming = process.env.ENV = "TEST" ? require("./testidata_upcoming.json") : null;
+const testidataOngoing = process.env.ENV = "TEST" ? require("./testidata_ongoing.json") : null;
+const testidataResults = process.env.ENV = "TEST" ? require("./testidata_results.json") : null;
+
+
 //const testidata_upcoming = require("./testidata_upcoming.json"); // testidata
 // const testidata_ongoing = require("./testidata_ongoing.json"); // testidata
 //const testidata_results = require("./testidata_results.json"); // testidata
@@ -46,10 +52,10 @@ app.get("/api/results", (req, res) => {
       if (response.data.length === 0) {
         //const data = parseResultsData(testidata_results.games); // testidata
         //res.json(data); // testidata
-        res.json(response.data);
+        res.json(testidataResults ? testidataResults.games : response.data);
       } else {
-        //const data = parseResultsData(testidata_results.games); // testidata
-        const data = parseResultsData(response.data.games);
+        const data = parseResultsData(response.data.games.length === 0 ? testidataResults.games : response.data.games); // testidata
+        //const data = parseResultsData(response.data.games);
         data.forEach((game) => {
           Result.findOneAndUpdate(
             { gameId: game.gameId, result: "" },
@@ -77,10 +83,10 @@ app.get("/api/upcoming", (req, res) => {
       if (response.data.length === 0) {
         //const data = parseUpcomingGamesData(testidata_upcoming[0].games); // testidata
         //res.json(data); //testidata
-        res.json(response.data);
+        res.json(testidataUpcoming ? parseUpcomingGamesData(testidataUpcoming[0].games) : response.data);
       } else {
         //const data = parseUpcomingGamesData(testidata_upcoming[0].games); // testidata
-        const data = parseUpcomingGamesData(response.data[0].games);
+        const data = parseUpcomingGamesData(response.data[0].games.length === 0 ? testidataUpcoming[0].games : response.data[0].games);
 
         data.forEach((game) => {
           const result = new Result({
@@ -128,10 +134,10 @@ app.get("/api/ongoing", (req, res) => {
       if (response.data.length === 0) {
         // const data = parseOngoingGamesData(testidata_ongoing); // testidata
         // res.json(data); //testidata
-        res.json(response.data);
+        res.json(testidataOngoing ? parseOngoingGamesData(testidataOngoing) : response.data);
       } else {
         // const data = parseOngoingGamesData(testidata_ongoing); // testidata
-        const data = parseOngoingGamesData(response.data);
+        const data = parseOngoingGamesData(response.data[0].games.length === 0 ? testidataOngoing : response.data);
         res.json(data);
       }
     })
@@ -286,7 +292,7 @@ const checkBets = async () => {
     .getResults()
     .then((response) => {
       // return parseResultsData(testidata_results.games);
-      return parseResultsData(response.data.games);
+      return parseResultsData(response.data.games.length === 0 ? testidataResults.games : response.data.games);
     })
     .catch((error) =>
       console.log(`Error fetching the results - ${error.message}`)
@@ -493,7 +499,7 @@ const checkHighlightVideo = () => {
     .then((response) => {
       if (response.data.games.length > 0) {
         //const data = parseResultsData(testidata_results.games); // testidata
-        const data = parseResultsData(response.data.games);
+        const data = parseResultsData(response.data.games.length === 0 ? testidataResults.games : response.data.games);
 
         data.forEach((game) => {
           const month = new Date(game.startTime).toLocaleString("default", {
