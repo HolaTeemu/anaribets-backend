@@ -51,4 +51,4 @@ groupsSchema.methods.comparePassword = (password, groupPassword, callback) => {
 }
 
 
-module.exports = mongoose.model("groups", groupsSchema);
+module.exports = mongoose.model("group", groupsSchema);
