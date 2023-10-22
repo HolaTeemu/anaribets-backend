@@ -5,7 +5,7 @@ const morgan = require("morgan");
 const cors = require("cors");
 const gamesService = require("./services/gamesService");
 const Group = require("./models/groups");
-const User = require("./models/users");
+const User = require("./models/user");
 const Result = require("./models/results");
 const {
   parseUpcomingGamesData,
@@ -18,6 +18,7 @@ const {
 } = require("./helpers/leaderboardHelpers");
 const YOUTUBE_API_KEY = process.env.API_KEY_YT;
 const YTSearch = require("youtube-api-search");
+const usersRouter = require("./controllers/users");
 const app = express();
 
 app.use(express.json());
@@ -146,58 +147,7 @@ app.get("/api/ongoing", (req, res) => {
     });
 });
 
-// Create new user
-app.post("/api/users", (req, res) => {
-  const body = req.body;
-
-  if (body.username === undefined) {
-    return res.status(400).json({ error: "Username is missing" });
-  }
-
-  if (body.email === undefined) {
-    return res.status(400).json({ error: "Email is missing" });
-  }
-
-  const user = new User({
-    username: body.username.toLowerCase(),
-    email: body.email,
-    groups: [],
-    bets: [],
-    points: 0,
-    totalBets: 0,
-  });
-
-  user.save().then((savedUser) => {
-    res.json(savedUser);
-  });
-});
-
-// Get users
-app.get("/api/users", (req, res) => {
-  User.find({}).then((result) => {
-    return res.json(result);
-  });
-});
-
-// Check if user exists
-app.get("/api/users/exist/:email", (req, res, next) => {
-  const email = req.params.email;
-
-  User.find({ email: email })
-    .then((result) => {
-      if (result.length > 0) {
-        return res.json({
-          id: result[0]._id,
-          username: result[0].username,
-        });
-      } else {
-        return res.json([]);
-      }
-    })
-    .catch((error) => {
-      next(error);
-    });
-});
+app.use('/api/users', usersRouter);
 
 // Add users bets
 app.post("/api/users/bets/:userId", (req, res, next) => {
@@ -370,17 +320,6 @@ app.post("/api/results/:userId", (req, res, next) => {
   );
 });
 
-// Get player's groups
-app.get("/api/users/:userId", (req, res, next) => {
-  const id = req.params.userId;
-
-  User.findById(id)
-    .then((result) => {
-      res.json(result.groups);
-    })
-    .catch((error) => next(error));
-});
-
 // Add player to the group
 app.post("/api/groups/join/:groupname", (req, res, next) => {
   const body = req.body;
@@ -479,20 +418,6 @@ app.get("/api/groups/:groupid", (req, res, next) => {
     .catch((error) => next(error));
 });
 
-// Change username
-app.post("/api/users/:userId", (req, res, next) => {
-  const body = req.body;
-  const userId = req.params.userId;
-
-  User.findByIdAndUpdate(
-    userId,
-    { username: body.newUsername },
-    { new: true }
-  ).then((user) => {
-    res.json(user);
-  });
-});
-
 const checkHighlightVideo = () => {
   gamesService
     .getResults()
@@ -571,6 +496,7 @@ setTimeout(() => {
 app.get("/*", (req, res) => {
   res.sendFile(__dirname + "/build/index.html");
 });
+
 
 const PORT = process.env.PORT || 3001;
 app.listen(PORT);
