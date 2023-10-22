@@ -17,6 +17,7 @@ const YTSearch = require("youtube-api-search");
 const usersRouter = require("./controllers/users");
 const groupsRouter = require("./controllers/groups");
 const gamesRouter = require("./controllers/games");
+const betsRouter = require("./controllers/bets");
 const app = express();
 
 app.use(express.json());
@@ -46,91 +47,7 @@ app.use(
 app.use('/api/users', usersRouter);
 app.use('/api/groups', groupsRouter);
 app.use('/api/games', gamesRouter);
-
-// Add users bets
-app.post("/api/users/bets/:userId", (req, res, next) => {
-  const body = req.body;
-  const id = req.params.userId;
-
-  if (body.bets === undefined) {
-    return res.status(400).json({ error: "Bets are missing" });
-  }
-
-  User.findOneAndUpdate(
-    { _id: id },
-    { $push: { bets: { $each: body.bets } } },
-    { new: true }
-  )
-    .then((updatedUser) => {
-      updatedUser.bets.forEach((bet) => {
-        Result.findOneAndUpdate(
-          { gameId: bet.game, "bets.playerId": { $ne: id } },
-          { $push: { bets: { ...bet, playerId: id } } },
-          { new: true }
-        )
-          .then((singleResult) => {
-            // console.log(singleResult);
-          })
-          .catch((error) => next(error));
-      });
-      res.json(updatedUser);
-    })
-    .catch((error) => next(error));
-});
-
-// Get user bets
-app.get("/api/users/bets/:userId", (req, res) => {
-  const id = req.params.userId;
-
-  User.find({ _id: id }).then((user) => {
-    const bets = user[0].bets;
-    if (bets.length === 0) {
-      return res.json([]);
-    }
-    res.json(bets);
-  });
-});
-
-// Get bet percentages
-app.get("/api/bets/amounts/:userId", (req, res) => {
-  const id = req.params.userId;
-
-  User.find({ _id: id }).then((user) => {
-    const bets = user[0].bets;
-    if (bets.length === 0) {
-      return res.json([]);
-    }
-
-    const gameIds = bets.map((bet) => bet.game);
-
-    Result.find({ gameId: { $in: gameIds } })
-      .then((foundResultDocuments) => {
-        let betAmounts = [];
-        foundResultDocuments.forEach((result) => {
-          const homeAbbr = result.gameId.substring(3, 6);
-          const awayAbbr = result.gameId.substring(0, 3);
-          let obj = {
-            gameId: result.gameId,
-            [homeAbbr]: 0,
-            [awayAbbr]: 0,
-          };
-
-          result.bets.forEach((bet) => {
-            if (bet.bet === homeAbbr) {
-              obj[homeAbbr] += 1;
-            } else {
-              obj[awayAbbr] += 1;
-            }
-          });
-          betAmounts = [...betAmounts, obj];
-        });
-        res.json(betAmounts);
-      })
-      .catch((error) =>
-        console.log(`Error fetching the bet amounts - ${error.message}`)
-      );
-  });
-});
+app.use('/api/bets', betsRouter);
 
 // Check bets of the users
 const checkBets = async () => {
@@ -184,39 +101,6 @@ const checkBets = async () => {
   }
 };
 
-// Get user's bets from last night
-app.post("/api/results/:userId", (req, res, next) => {
-  const body = req.body;
-  const id = req.params.userId;
-
-  if (body.gameIds === undefined) {
-    return res.status(400).json({ error: "Game ids are missing" });
-  }
-
-  const gameIds = req.body.gameIds;
-
-  Result.find({ gameId: { $in: gameIds }, result: { $ne: "" } }).then(
-    (foundResultDocuments) => {
-      Result.find({ "bets.playerId": id })
-        .then((foundResults) => {
-          let bets = [];
-          foundResults.forEach((resDoc) => {
-            const foundBet = resDoc.bets.find((el) => el.playerId === id);
-            bets = [
-              ...bets,
-              {
-                game: foundBet.game,
-                bet: foundBet.bet,
-                highlightReel: resDoc.highlightReel,
-              },
-            ];
-          });
-          res.json(bets);
-        })
-        .catch((error) => next(error));
-    }
-  );
-});
 
 const checkHighlightVideo = () => {
   gamesService
