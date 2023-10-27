@@ -1,6 +1,7 @@
 const betsRouter = require("express").Router();
 const User = require("../models/user");
 const Result = require("../models/result");
+const Group = require("../models/group");
 
 // Add users bets
 betsRouter.post("/:userId", (req, res, next) => {
@@ -89,36 +90,75 @@ betsRouter.get("/amounts/:userId", (req, res) => {
 
 // Get user's bets from last night
 betsRouter.post("/results/:userId", (req, res, next) => {
-    const body = req.body;
-    const id = req.params.userId;
-  
-    if (body.gameIds === undefined) {
-      return res.status(400).json({ error: "Game ids are missing" });
-    }
-  
-    const gameIds = req.body.gameIds;
-  
-    Result.find({ gameId: { $in: gameIds }, result: { $ne: "" } }).then(
-      (foundResultDocuments) => {
-        Result.find({ "bets.playerId": id })
-          .then((foundResults) => {
-            let bets = [];
-            foundResults.forEach((resDoc) => {
-              const foundBet = resDoc.bets.find((el) => el.playerId === id);
-              bets = [
-                ...bets,
-                {
-                  game: foundBet.game,
-                  bet: foundBet.bet,
-                  highlightReel: resDoc.highlightReel,
-                },
-              ];
-            });
-            res.json(bets);
-          })
-          .catch((error) => next(error));
-      }
-    );
-  });
+  const body = req.body;
+  const id = req.params.userId;
 
+  if (body.gameIds === undefined) {
+    return res.status(400).json({ error: "Game ids are missing" });
+  }
+
+  const gameIds = req.body.gameIds;
+
+  Result.find({ gameId: { $in: gameIds }, result: { $ne: "" } }).then(
+    (foundResultDocuments) => {
+      Result.find({ "bets.playerId": id })
+        .then((foundResults) => {
+          let bets = [];
+          foundResults.forEach((resDoc) => {
+            const foundBet = resDoc.bets.find((el) => el.playerId === id);
+            bets = [
+              ...bets,
+              {
+                game: foundBet.game,
+                bet: foundBet.bet,
+                highlightReel: resDoc.highlightReel,
+              },
+            ];
+          });
+          res.json(bets);
+        })
+        .catch((error) => next(error));
+    }
+  );
+});
+
+// Get lists of last night's bets (for the results page name list)
+betsRouter.post("/grouplist/:userId", (req, res, next) => {
+  const gameId = req.body.gameId;
+  const id = req.params.userId;
+  const groupObjects = []; // List of objects with groupname, players and what their bets were
+  let playerList = [];
+
+  User.findById(id)
+    .then((result) => {
+      const groups = result.groups;
+      Result.find({ gameId: gameId }).then((gameResult) => {
+        //const userBet = gameResult[0].bets.find(r => r.playerId === id);
+        Group.find({ _id: { $in: groups } }).then((result) => {
+          result.forEach((group) => {
+            group.players.forEach((player) => {
+              if (gameResult[0]) {
+                const playerBet = gameResult[0].bets.find(
+                  (r) => r.playerId === player._id.toString()
+                );
+                if (playerBet) {
+                  playerList.push({
+                    user: player._id.toString(),
+                    bet: playerBet.bet,
+                  });
+                }
+              }
+            });
+            groupObjects.push({
+              groupName: group.groupname,
+              players: playerList,
+            });
+            playerList = [];
+          });
+          res.json(groupObjects);
+        });
+      });
+    })
+    .catch((error) => next(error));
+});
 module.exports = betsRouter;
