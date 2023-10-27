@@ -60,6 +60,8 @@ const parseResultsData = (data) => {
         awayAbbr: awayAbbr,
         homeCity: game.teams.home.locationName,
         awayCity: game.teams.away.locationName,
+        homeTeamName: game.teams.home.teamName,
+        awayTeamName: game.teams.away.teamName,
         homeGoals: game.scores[homeAbbr],
         awayGoals: game.scores[awayAbbr],
         gameId: gameId,
