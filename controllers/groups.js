@@ -1,11 +1,23 @@
 const groupsRouter = require("express").Router();
 const Group = require("../models/group");
 const User = require("../models/user");
-const { parseLeaderboardData } = require("../helpers/leaderboardHelpers");
+const { parseLeaderboardData } = require("../utils/leaderboardUtils");
 const mongoose = require("mongoose");
 
+// Get player's groups
+groupsRouter.get("/:userId", (req, res, next) => {
+  const id = req.params.userId;
+  const groupObjects = [];
+
+  User.findById(id)
+    .then((result) => {
+      res.json(result.groups);
+    })
+    .catch((error) => next(error));
+});
+
 // Get group leaderboard
-groupsRouter.get("/:groupid", (req, res, next) => {
+groupsRouter.get("/leaderboard/:groupid", (req, res, next) => {
   const id = req.params.groupid;
   Group.findById(id)
     .then((result) => {
