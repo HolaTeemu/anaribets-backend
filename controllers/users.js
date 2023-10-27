@@ -1,4 +1,5 @@
 const usersRouter = require("express").Router();
+const Group = require("../models/group");
 const User = require("../models/user");
 
 // Get users
@@ -10,23 +11,23 @@ usersRouter.get("/", (req, res) => {
 
 // Check if user exists
 usersRouter.get("/exist/:email", (req, res, next) => {
-    const email = req.params.email;
-  
-    User.find({ email: email })
-      .then((result) => {
-        if (result.length > 0) {
-          return res.json({
-            id: result[0]._id,
-            username: result[0].username,
-          });
-        } else {
-          return res.json([]);
-        }
-      })
-      .catch((error) => {
-        next(error);
-      });
-  });
+  const email = req.params.email;
+
+  User.find({ email: email })
+    .then((result) => {
+      if (result.length > 0) {
+        return res.json({
+          id: result[0]._id,
+          username: result[0].username,
+        });
+      } else {
+        return res.json([]);
+      }
+    })
+    .catch((error) => {
+      next(error);
+    });
+});
 
 // Create new user
 usersRouter.post("/", (req, res) => {
@@ -71,15 +72,12 @@ usersRouter.post("/:userId", (req, res, next) => {
   });
 });
 
-// Get player's groups
-usersRouter.get("/:userId", (req, res, next) => {
-  const id = req.params.userId;
-
-  User.findById(id)
-    .then((result) => {
-      res.json(result.groups);
-    })
-    .catch((error) => next(error));
+// Get username
+usersRouter.get("/:userId", (req, res) => {
+  const userId = req.params.userId;
+  User.findById(userId).then((user) => {
+    res.json(user.username);
+  });
 });
 
 module.exports = usersRouter;
