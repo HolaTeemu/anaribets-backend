@@ -5,7 +5,7 @@ const {
   parseUpcomingGamesData,
   parseResultsData,
   parseOngoingGamesData,
-} = require("../helpers/gamesHelpers");
+} = require("../utils/gamesUtils");
 
 // Get results of last nights games
 gamesRouter.get("/results", (req, res) => {
@@ -68,6 +68,7 @@ gamesRouter.get("/upcoming", (req, res) => {
             gameId: game.gameId,
             result: "",
             bets: [],
+            highlightReel: ""
           });
 
           Result.findOne({ gameId: game.gameId }).then((res) => {
