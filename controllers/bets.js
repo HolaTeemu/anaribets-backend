@@ -63,19 +63,17 @@ betsRouter.get("/amounts/:userId", (req, res) => {
       .then((foundResultDocuments) => {
         let betAmounts = [];
         foundResultDocuments.forEach((result) => {
-          const homeAbbr = result.gameId.substring(3, 6);
-          const awayAbbr = result.gameId.substring(0, 3);
           let obj = {
             gameId: result.gameId,
-            [homeAbbr]: 0,
-            [awayAbbr]: 0,
+            [result.homeAbbr]: 0,
+            [result.awayAbbr]: 0,
           };
 
           result.bets.forEach((bet) => {
-            if (bet.bet === homeAbbr) {
-              obj[homeAbbr] += 1;
+            if (bet.bet === result.homeAbbr) {
+              obj[result.homeAbbr] += 1;
             } else {
-              obj[awayAbbr] += 1;
+              obj[result.awayAbbr] += 1;
             }
           });
           betAmounts = [...betAmounts, obj];

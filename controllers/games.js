@@ -5,12 +5,15 @@ const {
   parseUpcomingGamesData,
   parseResultsData,
   parseOngoingGamesData,
+  parseUpcomingGamesDataOLD,
+  parseResultsData2
 } = require("../utils/gamesUtils");
 
+/*
 // Get results of last nights games
 gamesRouter.get("/results", (req, res) => {
   gamesService
-    .getResults()
+    .getResultsOLD()
     .then((response) => {
       if (response.data.length === 0) {
         //const data = parseResultsData(testidata_results.games); // testidata
@@ -39,13 +42,14 @@ gamesRouter.get("/results", (req, res) => {
       console.log(`Error fetching the results - ${error.message}`)
     );
 });
-
+*/
+/*
 // Get upcoming games
 gamesRouter.get("/upcoming", (req, res) => {
   const today = new Date();
   const startDate = today.toISOString().split("T")[0];
   gamesService
-    .getUpcomingGames(startDate)
+    .getUpcomingGamesOLD(startDate)
     .then((response) => {
       if (response.data.length === 0) {
         //const data = parseUpcomingGamesData(testidata_upcoming[0].games); // testidata
@@ -68,7 +72,7 @@ gamesRouter.get("/upcoming", (req, res) => {
             gameId: game.gameId,
             result: "",
             bets: [],
-            highlightReel: ""
+            highlightReel: "",
           });
 
           Result.findOne({ gameId: game.gameId }).then((res) => {
@@ -89,6 +93,7 @@ gamesRouter.get("/upcoming", (req, res) => {
       console.log(`Error fetching the upcoming games - ${error.message}`);
     });
 });
+*/
 
 // Get ongoing games
 gamesRouter.get("/ongoing", (req, res) => {
@@ -127,5 +132,99 @@ gamesRouter.get("/ongoing", (req, res) => {
       console.log(`Error fetching the ongoing games - ${error.message}`);
     });
 });
+
+// Get upcoming games2
+gamesRouter.get("/upcoming", (req, res) => {
+  const today = new Date();
+  const startDate = today.toISOString().split("T")[0];
+  gamesService
+    .getUpcomingGames()
+    .then((response) => {
+      if (response.data.length === 0) {
+        //const data = parseUpcomingGamesData(testidata_upcoming[0].games); // testidata
+        //res.json(data); //testidata
+        res.json(
+          testidataUpcoming
+            ? parseUpcomingGamesData(testidataUpcoming[0].games)
+            : response.data
+        );
+      } else {
+        //const data = parseUpcomingGamesData(testidata_upcoming[0].games); // testidata
+        const data = parseUpcomingGamesData(response.data.gameWeek[0].games);
+        
+        data.forEach((game) => {
+          const result = new Result({
+            gameId: game.gameId,
+            startTime: game.startTime,
+            result: "",
+            homeAbbr: game.homeAbbr,
+            awayAbbr: game.awayAbbr,
+            bets: [],
+            highlightReel: "",
+          });
+
+          Result.findOne({ gameId: game.gameId }).then((res) => {
+            if (!res) {
+              result
+                .save()
+                .then((savedResult) => {
+                  // console.log(savedResult);
+                })
+                .catch((error) => next(error));
+            }
+          });
+        });
+        res.json(data);
+        
+      }
+    })
+    .catch((error) => {
+      console.log(`Error fetching the upcoming games - ${error.message}`);
+    });
+});
+
+// Get results of last nights games
+gamesRouter.get("/results", (req, res) => {
+  const yesterday = new Date();
+
+  yesterday.setDate(yesterday.getDate() - 1);
+  yesterday.toDateString();
+  const yesterdayDateString = yesterday.toISOString().split("T")[0];
+  console.log(yesterdayDateString);
+
+  gamesService.getResults(yesterdayDateString).then((response) => {
+    if (response.data.length === 0) {
+      //const data = parseResultsData(testidata_results.games); // testidata
+      //res.json(data); // testidata
+      res.json(testidataResults ? testidataResults.games : response.data);
+    } else {
+      const data = parseResultsData(response.data.gameWeek[0].games);      
+      res.json(data);
+      /*
+      const data = parseResultsData2(
+        response.data.dates.games.length === 0
+          ? testidataResults.games
+          : response.data.games
+      );
+      */
+
+      /*
+      data.forEach((game) => {
+        Result.findOneAndUpdate(
+          { gameId: game.gameId, result: "" },
+          { result: game.winner },
+          { new: true }
+        ).then((updatedResult) => {
+          // console.log(updatedResult);
+        });
+      });
+      res.json(data);
+      */
+    }
+  });
+});
+
+
+
 
 module.exports = gamesRouter;

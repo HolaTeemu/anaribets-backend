@@ -1,4 +1,4 @@
-const parseUpcomingGamesData = (data) => {
+const parseUpcomingGamesDataOLD = (data) => {
   let parsedData = [];
   data.forEach((game) => {
     const gameId = `${game.teams.away.abbreviation}${
@@ -43,11 +43,11 @@ const parseOngoingGamesData = (data) => {
         });
       }
     });
-  })
+  });
   return parsedData;
 };
 
-const parseResultsData = (data) => {
+const parseResultsDataOLD = (data) => {
   let parsedData = [];
   data.forEach((game) => {
     const homeAbbr = game.teams.home.abbreviation;
@@ -75,9 +75,52 @@ const parseResultsData = (data) => {
   return parsedData;
 };
 
+const parseResultsData = (data) => {
+  let parsedData = [];
+  data.forEach((game) => {
+    if (game.gameState === "OFF") {
+      parsedData = parsedData.concat({
+        startTime: game.startTimeUTC,
+        homeAbbr: game.homeTeam.abbrev,
+        awayAbbr: game.awayTeam.abbrev,
+        homeCity: game.homeTeam.placeName.default,
+        awayCity: game.awayTeam.placeName.default,
+        homeGoals: game.homeTeam.score,
+        awayGoals: game.awayTeam.score,
+        winner:
+          game.homeTeam.score > game.awayTeam.score ? game.homeTeam.abbrev : game.awayTeam.abbrev,
+        gameId: game.id,
+        overtime: game.gameOutcome.lastPeriodType === "OT" ? true : false,
+        shootout: game.gameOutcome.lastPeriodType === "SO" ? true : false,
+      });
+    }
+  });
+  return parsedData;
+}
+
+const parseUpcomingGamesData = (data) => {
+  let parsedData = [];
+  data.forEach((game) => {
+    if (game.gameState === "FUT") {
+      parsedData = parsedData.concat({
+        status: game.gameState,
+        startTime: game.startTimeUTC,
+        homeAbbr: game.homeTeam.abbrev,
+        awayAbbr: game.awayTeam.abbrev,
+        homeCity: game.homeTeam.placeName.default,
+        awayCity: game.awayTeam.placeName.default,
+        gameId: game.id,
+      });
+    }
+  });
+  return parsedData;
+};
+
 // eslint-disable-next-line import/no-anonymous-default-export
 module.exports = {
-  parseUpcomingGamesData,
+  parseUpcomingGamesDataOLD,
   parseOngoingGamesData,
+  parseResultsDataOLD,
   parseResultsData,
+  parseUpcomingGamesData,
 };

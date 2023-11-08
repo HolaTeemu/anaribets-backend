@@ -7,17 +7,21 @@ const {
 // Check bets of the users
 const checkBets = async () => {
     console.log("Checking bets...");
+    const yesterday = new Date();
+    yesterday.setDate(yesterday.getDate() - 1);
+    yesterday.toDateString();
+    const yesterdayDateString = yesterday.toISOString().split("T")[0];
   
     const results = await gamesService
-      .getResults()
+      .getResults(yesterdayDateString)
       .then((response) => {
         // return parseResultsData(testidata_results.games);
-        return parseResultsData(response.data.games.length === 0 ? testidataResults.games : response.data.games);
+        return parseResultsData(response.data.gameWeek[0].games === 0 ? testidataResults.games : response.data.gameWeek[0].games);
       })
       .catch((error) =>
         console.log(`Error fetching the results - ${error.message}`)
       );
-  
+      
     if (results.length > 0) {
       User.find({}).then((result) => {
         result.forEach((user) => {

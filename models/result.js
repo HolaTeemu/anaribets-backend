@@ -1,8 +1,10 @@
 const mongoose = require("mongoose");
 
 const resultsSchema = new mongoose.Schema({
-  gameId: String,
+  gameId: Number,
   result: String,
+  homeAbbr: String,
+  awayAbbr: String,
   bets: Array,
   highlightReel: String,
 });
