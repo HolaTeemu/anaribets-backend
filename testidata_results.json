@@ -1,0 +1,1306 @@
+{
+  "date": { "raw": "2022-11-23", "pretty": "Wed Nov 23" },
+  "games": [
+    {
+      "status": { "state": "LIVE" },
+      "startTime": "2022-11-24T00:00:00Z",
+      "goals": [
+        {
+          "team": "MIN",
+          "period": "1",
+          "scorer": { "player": "Mason Shaw", "seasonTotal": 3 },
+          "assists": [
+            { "player": "Matt Dumba", "seasonTotal": 3 },
+            { "player": "Nic Petan", "seasonTotal": 1 }
+          ],
+          "min": 8,
+          "sec": 20
+        },
+        {
+          "team": "MIN",
+          "period": "2",
+          "scorer": { "player": "Calen Addison", "seasonTotal": 1 },
+          "assists": [
+            { "player": "Jon Merrill", "seasonTotal": 2 },
+            { "player": "Matt Boldy", "seasonTotal": 6 }
+          ],
+          "min": 2,
+          "sec": 50
+        },
+        {
+          "team": "MIN",
+          "period": "2",
+          "scorer": { "player": "Marcus Foligno", "seasonTotal": 2 },
+          "assists": [
+            { "player": "Matt Dumba", "seasonTotal": 4 },
+            { "player": "Joel Eriksson Ek", "seasonTotal": 7 }
+          ],
+          "min": 3,
+          "sec": 58
+        },
+        {
+          "team": "WPG",
+          "period": "2",
+          "scorer": { "player": "Kyle Connor", "seasonTotal": 6 },
+          "assists": [
+            { "player": "Josh Morrissey", "seasonTotal": 16 },
+            { "player": "Michael Eyssimont", "seasonTotal": 1 }
+          ],
+          "min": 14,
+          "sec": 18
+        },
+        {
+          "team": "MIN",
+          "period": "3",
+          "scorer": { "player": "Kirill Kaprizov", "seasonTotal": 11 },
+          "assists": [
+            { "player": "Matt Boldy", "seasonTotal": 7 },
+            { "player": "Mats Zuccarello", "seasonTotal": 12 }
+          ],
+          "min": 0,
+          "sec": 28,
+          "strength": "PPG"
+        },
+        {
+          "team": "MIN",
+          "period": "3",
+          "scorer": { "player": "Marcus Foligno", "seasonTotal": 3 },
+          "assists": [{ "player": "Joel Eriksson Ek", "seasonTotal": 8 }],
+          "min": 6,
+          "sec": 51
+        },
+        {
+          "team": "MIN",
+          "period": "3",
+          "scorer": { "player": "Matt Boldy", "seasonTotal": 7 },
+          "assists": [
+            { "player": "Kirill Kaprizov", "seasonTotal": 11 },
+            { "player": "Calen Addison", "seasonTotal": 9 }
+          ],
+          "min": 9,
+          "sec": 46,
+          "strength": "PPG"
+        }
+      ],
+      "scores": { "WPG": 1, "MIN": 6 },
+      "teams": {
+        "away": {
+          "abbreviation": "WPG",
+          "id": 52,
+          "locationName": "Winnipeg",
+          "shortName": "Winnipeg",
+          "teamName": "Jets"
+        },
+        "home": {
+          "abbreviation": "MIN",
+          "id": 30,
+          "locationName": "Minnesota",
+          "shortName": "Minnesota",
+          "teamName": "Wild"
+        }
+      },
+      "preGameStats": {
+        "records": {
+          "MIN": { "wins": 8, "losses": 8, "ot": 2 },
+          "WPG": { "wins": 11, "losses": 5, "ot": 1 }
+        }
+      },
+      "currentStats": {
+        "records": {
+          "WPG": { "wins": 11, "losses": 6, "ot": 1 },
+          "MIN": { "wins": 9, "losses": 8, "ot": 2 }
+        },
+        "streaks": {
+          "WPG": { "type": "LOSSES", "count": 1 },
+          "MIN": { "type": "WINS", "count": 2 }
+        },
+        "standings": {
+          "WPG": {
+            "divisionRank": "3",
+            "leagueRank": "8",
+            "pointsFromPlayoffSpot": "+3"
+          },
+          "MIN": {
+            "divisionRank": "5",
+            "leagueRank": "19",
+            "pointsFromPlayoffSpot": "0"
+          }
+        }
+      },
+      "gameStats": {
+        "blocked": { "WPG": 12, "MIN": 18 },
+        "faceOffWinPercentage": { "WPG": "42.1", "MIN": "57.9" },
+        "giveaways": { "WPG": 5, "MIN": 2 },
+        "hits": { "WPG": 14, "MIN": 27 },
+        "pim": { "WPG": 19, "MIN": 13 },
+        "powerPlay": {
+          "WPG": { "goals": 0, "opportunities": 2, "percentage": "0.0" },
+          "MIN": { "goals": 2, "opportunities": 5, "percentage": "40.0" }
+        },
+        "shots": { "WPG": 29, "MIN": 39 },
+        "takeaways": { "WPG": 3, "MIN": 7 }
+      }
+    },
+    {
+      "status": { "state": "FINAL" },
+      "startTime": "2022-11-24T00:00:00Z",
+      "goals": [
+        {
+          "team": "ARI",
+          "period": "1",
+          "scorer": { "player": "Nick Schmaltz", "seasonTotal": 1 },
+          "assists": [{ "player": "Clayton Keller", "seasonTotal": 12 }],
+          "min": 1,
+          "sec": 6
+        },
+        {
+          "team": "ARI",
+          "period": "3",
+          "scorer": { "player": "Lawson Crouse", "seasonTotal": 8 },
+          "assists": [
+            { "player": "Dylan Guenther", "seasonTotal": 5 },
+            { "player": "J.J. Moser", "seasonTotal": 10 }
+          ],
+          "min": 1,
+          "sec": 52
+        },
+        {
+          "team": "ARI",
+          "period": "3",
+          "scorer": { "player": "Nick Bjugstad", "seasonTotal": 4 },
+          "assists": [
+            { "player": "Shayne Gostisbehere", "seasonTotal": 7 },
+            { "player": "Dylan Guenther", "seasonTotal": 6 }
+          ],
+          "min": 9,
+          "sec": 14
+        },
+        {
+          "team": "ARI",
+          "period": "3",
+          "scorer": { "player": "Lawson Crouse", "seasonTotal": 9 },
+          "assists": [
+            { "player": "Shayne Gostisbehere", "seasonTotal": 8 },
+            { "player": "Jakob Chychrun", "seasonTotal": 1 }
+          ],
+          "min": 17,
+          "sec": 53,
+          "emptyNet": true
+        }
+      ],
+      "scores": { "ARI": 4, "CAR": 0 },
+      "teams": {
+        "away": {
+          "abbreviation": "ARI",
+          "id": 53,
+          "locationName": "Arizona",
+          "shortName": "Arizona",
+          "teamName": "Coyotes"
+        },
+        "home": {
+          "abbreviation": "CAR",
+          "id": 12,
+          "locationName": "Carolina",
+          "shortName": "Carolina",
+          "teamName": "Hurricanes"
+        }
+      },
+      "preGameStats": {
+        "records": {
+          "ARI": { "wins": 6, "losses": 9, "ot": 2 },
+          "CAR": { "wins": 10, "losses": 5, "ot": 4 }
+        }
+      },
+      "currentStats": {
+        "records": {
+          "ARI": { "wins": 7, "losses": 9, "ot": 2 },
+          "CAR": { "wins": 10, "losses": 6, "ot": 4 }
+        },
+        "streaks": {
+          "ARI": { "type": "WINS", "count": 1 },
+          "CAR": { "type": "LOSSES", "count": 1 }
+        },
+        "standings": {
+          "ARI": {
+            "divisionRank": "7",
+            "leagueRank": "26",
+            "pointsFromPlayoffSpot": "-4"
+          },
+          "CAR": {
+            "divisionRank": "3",
+            "leagueRank": "12",
+            "pointsFromPlayoffSpot": "+1"
+          }
+        }
+      },
+      "gameStats": {
+        "blocked": { "ARI": 30, "CAR": 11 },
+        "faceOffWinPercentage": { "ARI": "42.9", "CAR": "57.1" },
+        "giveaways": { "ARI": 4, "CAR": 14 },
+        "hits": { "ARI": 29, "CAR": 21 },
+        "pim": { "ARI": 13, "CAR": 11 },
+        "powerPlay": {
+          "ARI": { "goals": 0, "opportunities": 3, "percentage": "0.0" },
+          "CAR": { "goals": 0, "opportunities": 4, "percentage": "0.0" }
+        },
+        "shots": { "ARI": 27, "CAR": 36 },
+        "takeaways": { "ARI": 5, "CAR": 7 }
+      }
+    },
+    {
+      "status": { "state": "FINAL" },
+      "startTime": "2022-11-24T00:00:00Z",
+      "goals": [
+        {
+          "team": "DET",
+          "period": "2",
+          "scorer": { "player": "Dylan Larkin", "seasonTotal": 9 },
+          "assists": [{ "player": "David Perron", "seasonTotal": 10 }],
+          "min": 4,
+          "sec": 9
+        },
+        {
+          "team": "DET",
+          "period": "2",
+          "scorer": { "player": "Filip Hronek", "seasonTotal": 5 },
+          "assists": [{ "player": "Jonatan Berggren", "seasonTotal": 3 }],
+          "min": 14,
+          "sec": 16,
+          "strength": "PPG"
+        },
+        {
+          "team": "DET",
+          "period": "3",
+          "scorer": { "player": "Michael Rasmussen", "seasonTotal": 3 },
+          "assists": [
+            { "player": "Adam Erne", "seasonTotal": 7 },
+            { "player": "Filip Hronek", "seasonTotal": 11 }
+          ],
+          "min": 19,
+          "sec": 39,
+          "emptyNet": true
+        }
+      ],
+      "scores": { "NSH": 0, "DET": 3 },
+      "teams": {
+        "away": {
+          "abbreviation": "NSH",
+          "id": 18,
+          "locationName": "Nashville",
+          "shortName": "Nashville",
+          "teamName": "Predators"
+        },
+        "home": {
+          "abbreviation": "DET",
+          "id": 17,
+          "locationName": "Detroit",
+          "shortName": "Detroit",
+          "teamName": "Red Wings"
+        }
+      },
+      "preGameStats": {
+        "records": {
+          "DET": { "wins": 9, "losses": 5, "ot": 4 },
+          "NSH": { "wins": 9, "losses": 8, "ot": 2 }
+        }
+      },
+      "currentStats": {
+        "records": {
+          "NSH": { "wins": 9, "losses": 9, "ot": 2 },
+          "DET": { "wins": 10, "losses": 5, "ot": 4 }
+        },
+        "streaks": {
+          "NSH": { "type": "LOSSES", "count": 1 },
+          "DET": { "type": "WINS", "count": 3 }
+        },
+        "standings": {
+          "NSH": {
+            "divisionRank": "6",
+            "leagueRank": "22",
+            "pointsFromPlayoffSpot": "0"
+          },
+          "DET": {
+            "divisionRank": "3",
+            "leagueRank": "9",
+            "pointsFromPlayoffSpot": "+1"
+          }
+        }
+      },
+      "gameStats": {
+        "blocked": { "NSH": 9, "DET": 23 },
+        "faceOffWinPercentage": { "NSH": "39.5", "DET": "60.5" },
+        "giveaways": { "NSH": 8, "DET": 17 },
+        "hits": { "NSH": 18, "DET": 29 },
+        "pim": { "NSH": 4, "DET": 6 },
+        "powerPlay": {
+          "NSH": { "goals": 0, "opportunities": 3, "percentage": "0.0" },
+          "DET": { "goals": 1, "opportunities": 2, "percentage": "50.0" }
+        },
+        "shots": { "NSH": 26, "DET": 29 },
+        "takeaways": { "NSH": 3, "DET": 9 }
+      }
+    },
+    {
+      "status": { "state": "FINAL" },
+      "startTime": "2022-11-24T00:30:00Z",
+      "goals": [
+        {
+          "team": "NYI",
+          "period": "2",
+          "scorer": { "player": "Jean-Gabriel Pageau", "seasonTotal": 4 },
+          "assists": [
+            { "player": "Zach Parise", "seasonTotal": 4 },
+            { "player": "Adam Pelech", "seasonTotal": 7 }
+          ],
+          "min": 4,
+          "sec": 33,
+          "strength": "SHG"
+        },
+        {
+          "team": "NYI",
+          "period": "2",
+          "scorer": { "player": "Jean-Gabriel Pageau", "seasonTotal": 5 },
+          "assists": [
+            { "player": "Mathew Barzal", "seasonTotal": 21 },
+            { "player": "Anders Lee", "seasonTotal": 11 }
+          ],
+          "min": 6,
+          "sec": 39,
+          "strength": "PPG"
+        },
+        {
+          "team": "NYI",
+          "period": "2",
+          "scorer": { "player": "Sebastian Aho", "seasonTotal": 2 },
+          "assists": [
+            { "player": "Oliver Wahlstrom", "seasonTotal": 6 },
+            { "player": "Casey Cizikas", "seasonTotal": 4 }
+          ],
+          "min": 16,
+          "sec": 56
+        }
+      ],
+      "scores": { "EDM": 0, "NYI": 3 },
+      "teams": {
+        "away": {
+          "abbreviation": "EDM",
+          "id": 22,
+          "locationName": "Edmonton",
+          "shortName": "Edmonton",
+          "teamName": "Oilers"
+        },
+        "home": {
+          "abbreviation": "NYI",
+          "id": 2,
+          "locationName": "New York",
+          "shortName": "NY Islanders",
+          "teamName": "Islanders"
+        }
+      },
+      "preGameStats": {
+        "records": {
+          "NYI": { "wins": 12, "losses": 8, "ot": 0 },
+          "EDM": { "wins": 10, "losses": 9, "ot": 0 }
+        }
+      },
+      "currentStats": {
+        "records": {
+          "EDM": { "wins": 10, "losses": 10, "ot": 0 },
+          "NYI": { "wins": 13, "losses": 8, "ot": 0 }
+        },
+        "streaks": {
+          "EDM": { "type": "LOSSES", "count": 2 },
+          "NYI": { "type": "WINS", "count": 2 }
+        },
+        "standings": {
+          "EDM": {
+            "divisionRank": "5",
+            "leagueRank": "21",
+            "pointsFromPlayoffSpot": "0"
+          },
+          "NYI": {
+            "divisionRank": "2",
+            "leagueRank": "10",
+            "pointsFromPlayoffSpot": "+3"
+          }
+        }
+      },
+      "gameStats": {
+        "blocked": { "EDM": 9, "NYI": 14 },
+        "faceOffWinPercentage": { "EDM": "47.9", "NYI": "52.1" },
+        "giveaways": { "EDM": 17, "NYI": 21 },
+        "hits": { "EDM": 17, "NYI": 20 },
+        "pim": { "EDM": 4, "NYI": 10 },
+        "powerPlay": {
+          "EDM": { "goals": 0, "opportunities": 5, "percentage": "0.0" },
+          "NYI": { "goals": 1, "opportunities": 2, "percentage": "50.0" }
+        },
+        "shots": { "EDM": 49, "NYI": 31 },
+        "takeaways": { "EDM": 3, "NYI": 6 }
+      }
+    },
+    {
+      "status": { "state": "FINAL" },
+      "startTime": "2022-11-24T00:30:00Z",
+      "goals": [
+        {
+          "team": "PHI",
+          "period": "1",
+          "scorer": { "player": "Morgan Frost", "seasonTotal": 3 },
+          "assists": [
+            { "player": "Travis Sanheim", "seasonTotal": 4 },
+            { "player": "Joel Farabee", "seasonTotal": 9 }
+          ],
+          "min": 5,
+          "sec": 27
+        },
+        {
+          "team": "WSH",
+          "period": "1",
+          "scorer": { "player": "Marcus Johansson", "seasonTotal": 5 },
+          "assists": [
+            { "player": "Alex Ovechkin", "seasonTotal": 9 },
+            { "player": "T.J. Oshie", "seasonTotal": 4 }
+          ],
+          "min": 11,
+          "sec": 5,
+          "strength": "PPG"
+        },
+        {
+          "team": "PHI",
+          "period": "2",
+          "scorer": { "player": "Patrick Brown", "seasonTotal": 1 },
+          "assists": [
+            { "player": "Ivan Provorov", "seasonTotal": 8 },
+            { "player": "Nicolas Deslauriers", "seasonTotal": 3 }
+          ],
+          "min": 14,
+          "sec": 33
+        },
+        {
+          "team": "WSH",
+          "period": "3",
+          "scorer": { "player": "Sonny Milano", "seasonTotal": 3 },
+          "assists": [
+            { "player": "Evgeny Kuznetsov", "seasonTotal": 13 },
+            { "player": "T.J. Oshie", "seasonTotal": 5 }
+          ],
+          "min": 17,
+          "sec": 2
+        },
+        {
+          "team": "WSH",
+          "period": "OT",
+          "scorer": { "player": "Alex Ovechkin", "seasonTotal": 10 },
+          "assists": [
+            { "player": "Dylan Strome", "seasonTotal": 11 },
+            { "player": "Erik Gustafsson", "seasonTotal": 8 }
+          ],
+          "min": 1,
+          "sec": 4
+        }
+      ],
+      "scores": { "PHI": 2, "WSH": 3, "overtime": true },
+      "teams": {
+        "away": {
+          "abbreviation": "PHI",
+          "id": 4,
+          "locationName": "Philadelphia",
+          "shortName": "Philadelphia",
+          "teamName": "Flyers"
+        },
+        "home": {
+          "abbreviation": "WSH",
+          "id": 15,
+          "locationName": "Washington",
+          "shortName": "Washington",
+          "teamName": "Capitals"
+        }
+      },
+      "preGameStats": {
+        "records": {
+          "WSH": { "wins": 7, "losses": 10, "ot": 3 },
+          "PHI": { "wins": 7, "losses": 8, "ot": 4 }
+        }
+      },
+      "currentStats": {
+        "records": {
+          "PHI": { "wins": 7, "losses": 8, "ot": 5 },
+          "WSH": { "wins": 8, "losses": 10, "ot": 3 }
+        },
+        "streaks": {
+          "PHI": { "type": "OT", "count": 1 },
+          "WSH": { "type": "WINS", "count": 1 }
+        },
+        "standings": {
+          "PHI": {
+            "divisionRank": "6",
+            "leagueRank": "23",
+            "pointsFromPlayoffSpot": "-4"
+          },
+          "WSH": {
+            "divisionRank": "7",
+            "leagueRank": "24",
+            "pointsFromPlayoffSpot": "-4"
+          }
+        }
+      },
+      "gameStats": {
+        "blocked": { "PHI": 20, "WSH": 16 },
+        "faceOffWinPercentage": { "PHI": "42.3", "WSH": "57.7" },
+        "giveaways": { "PHI": 8, "WSH": 11 },
+        "hits": { "PHI": 35, "WSH": 30 },
+        "pim": { "PHI": 6, "WSH": 8 },
+        "powerPlay": {
+          "PHI": { "goals": 0, "opportunities": 4, "percentage": "0.0" },
+          "WSH": { "goals": 1, "opportunities": 3, "percentage": "33.3" }
+        },
+        "shots": { "PHI": 23, "WSH": 32 },
+        "takeaways": { "PHI": 4, "WSH": 11 }
+      }
+    },
+    {
+      "status": { "state": "LIVE" },
+      "startTime": "2022-11-24T01:30:00Z",
+      "goals": [
+        {
+          "team": "DAL",
+          "period": "1",
+          "scorer": { "player": "Jason Robertson", "seasonTotal": 15 },
+          "assists": [],
+          "min": 13,
+          "sec": 55
+        },
+        {
+          "team": "CHI",
+          "period": "2",
+          "scorer": { "player": "Seth Jones", "seasonTotal": 1 },
+          "assists": [
+            { "player": "Patrick Kane", "seasonTotal": 12 },
+            { "player": "Jack Johnson", "seasonTotal": 3 }
+          ],
+          "min": 4,
+          "sec": 22
+        },
+        {
+          "team": "CHI",
+          "period": "2",
+          "scorer": { "player": "Andreas Athanasiou", "seasonTotal": 6 },
+          "assists": [
+            { "player": "Max Domi", "seasonTotal": 9 },
+            { "player": "Caleb Jones", "seasonTotal": 7 }
+          ],
+          "min": 13,
+          "sec": 53
+        },
+        {
+          "team": "CHI",
+          "period": "2",
+          "scorer": { "player": "Connor Murphy", "seasonTotal": 2 },
+          "assists": [
+            { "player": "Jonathan Toews", "seasonTotal": 5 },
+            { "player": "Jarred Tinordi", "seasonTotal": 3 }
+          ],
+          "min": 16,
+          "sec": 53
+        },
+        {
+          "team": "CHI",
+          "period": "3",
+          "scorer": { "player": "Max Domi", "seasonTotal": 5 },
+          "assists": [
+            { "player": "Colin Blackwell", "seasonTotal": 3 },
+            { "player": "Jake McCabe", "seasonTotal": 4 }
+          ],
+          "min": 9,
+          "sec": 37
+        },
+        {
+          "team": "DAL",
+          "period": "3",
+          "scorer": { "player": "Jamie Benn", "seasonTotal": 9 },
+          "assists": [
+            { "player": "Roope Hintz", "seasonTotal": 16 },
+            { "player": "Joe Pavelski", "seasonTotal": 13 }
+          ],
+          "min": 10,
+          "sec": 15,
+          "strength": "PPG"
+        },
+        {
+          "team": "DAL",
+          "period": "3",
+          "scorer": { "player": "Mason Marchment", "seasonTotal": 7 },
+          "assists": [
+            { "player": "Tyler Seguin", "seasonTotal": 12 },
+            { "player": "Denis Gurianov", "seasonTotal": 3 }
+          ],
+          "min": 13,
+          "sec": 58
+        },
+        {
+          "team": "DAL",
+          "period": "3",
+          "scorer": { "player": "Ty Dellandrea", "seasonTotal": 3 },
+          "assists": [
+            { "player": "Jani Hakanpaa", "seasonTotal": 2 },
+            { "player": "Jamie Benn", "seasonTotal": 13 }
+          ],
+          "min": 14,
+          "sec": 12
+        },
+        {
+          "team": "DAL",
+          "period": "3",
+          "scorer": { "player": "Radek Faksa", "seasonTotal": 3 },
+          "assists": [
+            { "player": "Colin Miller", "seasonTotal": 4 },
+            { "player": "Ryan Suter", "seasonTotal": 4 }
+          ],
+          "min": 18,
+          "sec": 27
+        },
+        {
+          "team": "DAL",
+          "period": "3",
+          "scorer": { "player": "Jason Robertson", "seasonTotal": 16 },
+          "assists": [{ "player": "Jani Hakanpaa", "seasonTotal": 3 }],
+          "min": 19,
+          "sec": 51,
+          "emptyNet": true
+        }
+      ],
+      "scores": { "CHI": 4, "DAL": 6 },
+      "teams": {
+        "away": {
+          "abbreviation": "CHI",
+          "id": 16,
+          "locationName": "Chicago",
+          "shortName": "Chicago",
+          "teamName": "Blackhawks"
+        },
+        "home": {
+          "abbreviation": "DAL",
+          "id": 25,
+          "locationName": "Dallas",
+          "shortName": "Dallas",
+          "teamName": "Stars"
+        }
+      },
+      "preGameStats": {
+        "records": {
+          "DAL": { "wins": 11, "losses": 5, "ot": 3 },
+          "CHI": { "wins": 6, "losses": 9, "ot": 3 }
+        }
+      },
+      "currentStats": {
+        "records": {
+          "CHI": { "wins": 6, "losses": 10, "ot": 3 },
+          "DAL": { "wins": 12, "losses": 5, "ot": 3 }
+        },
+        "streaks": {
+          "CHI": { "type": "LOSSES", "count": 5 },
+          "DAL": { "type": "WINS", "count": 1 }
+        },
+        "standings": {
+          "CHI": {
+            "divisionRank": "8",
+            "leagueRank": "29",
+            "pointsFromPlayoffSpot": "-5"
+          },
+          "DAL": {
+            "divisionRank": "1",
+            "leagueRank": "4",
+            "pointsFromPlayoffSpot": "+7"
+          }
+        }
+      },
+      "gameStats": {
+        "blocked": { "CHI": 30, "DAL": 13 },
+        "faceOffWinPercentage": { "CHI": "46.2", "DAL": "53.8" },
+        "giveaways": { "CHI": 7, "DAL": 9 },
+        "hits": { "CHI": 13, "DAL": 23 },
+        "pim": { "CHI": 9, "DAL": 9 },
+        "powerPlay": {
+          "CHI": { "goals": 0, "opportunities": 2, "percentage": "0.0" },
+          "DAL": { "goals": 1, "opportunities": 2, "percentage": "50.0" }
+        },
+        "shots": { "CHI": 31, "DAL": 39 },
+        "takeaways": { "CHI": 6, "DAL": 10 }
+      }
+    },
+    {
+      "status": { "state": "FINAL" },
+      "startTime": "2022-11-24T03:00:00Z",
+      "goals": [
+        {
+          "team": "NYR",
+          "period": "1",
+          "scorer": { "player": "Barclay Goodrow", "seasonTotal": 5 },
+          "assists": [],
+          "min": 8,
+          "sec": 51
+        },
+        {
+          "team": "ANA",
+          "period": "1",
+          "scorer": { "player": "Mason McTavish", "seasonTotal": 3 },
+          "assists": [
+            { "player": "Dmitry Kulikov", "seasonTotal": 5 },
+            { "player": "Max Jones", "seasonTotal": 2 }
+          ],
+          "min": 9,
+          "sec": 22
+        },
+        {
+          "team": "ANA",
+          "period": "2",
+          "scorer": { "player": "Dmitry Kulikov", "seasonTotal": 2 },
+          "assists": [
+            { "player": "Adam Henrique", "seasonTotal": 5 },
+            { "player": "Cam Fowler", "seasonTotal": 7 }
+          ],
+          "min": 0,
+          "sec": 39
+        },
+        {
+          "team": "ANA",
+          "period": "2",
+          "scorer": { "player": "Troy Terry", "seasonTotal": 8 },
+          "assists": [{ "player": "Trevor Zegras", "seasonTotal": 9 }],
+          "min": 5,
+          "sec": 25
+        },
+        {
+          "team": "NYR",
+          "period": "2",
+          "scorer": { "player": "Braden Schneider", "seasonTotal": 2 },
+          "assists": [
+            { "player": "Mika Zibanejad", "seasonTotal": 13 },
+            { "player": "Artemi Panarin", "seasonTotal": 18 }
+          ],
+          "min": 18,
+          "sec": 6
+        }
+      ],
+      "scores": { "NYR": 2, "ANA": 3 },
+      "teams": {
+        "away": {
+          "abbreviation": "NYR",
+          "id": 3,
+          "locationName": "New York",
+          "shortName": "NY Rangers",
+          "teamName": "Rangers"
+        },
+        "home": {
+          "abbreviation": "ANA",
+          "id": 24,
+          "locationName": "Anaheim",
+          "shortName": "Anaheim",
+          "teamName": "Ducks"
+        }
+      },
+      "preGameStats": {
+        "records": {
+          "ANA": { "wins": 5, "losses": 13, "ot": 1 },
+          "NYR": { "wins": 10, "losses": 6, "ot": 4 }
+        }
+      },
+      "currentStats": {
+        "records": {
+          "NYR": { "wins": 10, "losses": 7, "ot": 4 },
+          "ANA": { "wins": 6, "losses": 13, "ot": 1 }
+        },
+        "streaks": {
+          "NYR": { "type": "LOSSES", "count": 1 },
+          "ANA": { "type": "WINS", "count": 1 }
+        },
+        "standings": {
+          "NYR": {
+            "divisionRank": "5",
+            "leagueRank": "14",
+            "pointsFromPlayoffSpot": "+1"
+          },
+          "ANA": {
+            "divisionRank": "8",
+            "leagueRank": "32",
+            "pointsFromPlayoffSpot": "-7"
+          }
+        }
+      },
+      "gameStats": {
+        "blocked": { "NYR": 10, "ANA": 20 },
+        "faceOffWinPercentage": { "NYR": "47.8", "ANA": "52.2" },
+        "giveaways": { "NYR": 8, "ANA": 6 },
+        "hits": { "NYR": 21, "ANA": 18 },
+        "pim": { "NYR": 6, "ANA": 8 },
+        "powerPlay": {
+          "NYR": { "goals": 0, "opportunities": 4, "percentage": "0.0" },
+          "ANA": { "goals": 0, "opportunities": 3, "percentage": "0.0" }
+        },
+        "shots": { "NYR": 43, "ANA": 22 },
+        "takeaways": { "NYR": 9, "ANA": 7 }
+      }
+    },
+    {
+      "status": { "state": "FINAL" },
+      "startTime": "2022-11-24T03:00:00Z",
+      "goals": [
+        {
+          "team": "VGK",
+          "period": "1",
+          "scorer": { "player": "Mark Stone", "seasonTotal": 9 },
+          "assists": [
+            { "player": "Jack Eichel", "seasonTotal": 15 },
+            { "player": "Jonathan Marchessault", "seasonTotal": 9 }
+          ],
+          "min": 17,
+          "sec": 2,
+          "strength": "PPG"
+        },
+        {
+          "team": "OTT",
+          "period": "1",
+          "scorer": { "player": "Jake Sanderson", "seasonTotal": 1 },
+          "assists": [
+            { "player": "Alex DeBrincat", "seasonTotal": 10 },
+            { "player": "Tim St\u00fctzle", "seasonTotal": 12 }
+          ],
+          "min": 19,
+          "sec": 42,
+          "strength": "PPG"
+        },
+        {
+          "team": "VGK",
+          "period": "2",
+          "scorer": { "player": "William Carrier", "seasonTotal": 7 },
+          "assists": [
+            { "player": "Zach Whitecloud", "seasonTotal": 4 },
+            { "player": "Nicolas Hague", "seasonTotal": 4 }
+          ],
+          "min": 16,
+          "sec": 23
+        },
+        {
+          "team": "VGK",
+          "period": "3",
+          "scorer": { "player": "William Karlsson", "seasonTotal": 5 },
+          "assists": [{ "player": "Alex Pietrangelo", "seasonTotal": 18 }],
+          "min": 2,
+          "sec": 39
+        },
+        {
+          "team": "VGK",
+          "period": "3",
+          "scorer": { "player": "Jack Eichel", "seasonTotal": 11 },
+          "assists": [{ "player": "Brayden McNabb", "seasonTotal": 6 }],
+          "min": 18,
+          "sec": 19,
+          "emptyNet": true
+        }
+      ],
+      "scores": { "OTT": 1, "VGK": 4 },
+      "teams": {
+        "away": {
+          "abbreviation": "OTT",
+          "id": 9,
+          "locationName": "Ottawa",
+          "shortName": "Ottawa",
+          "teamName": "Senators"
+        },
+        "home": {
+          "abbreviation": "VGK",
+          "id": 54,
+          "locationName": "Vegas",
+          "shortName": "Vegas",
+          "teamName": "Golden Knights"
+        }
+      },
+      "preGameStats": {
+        "records": {
+          "VGK": { "wins": 15, "losses": 4, "ot": 1 },
+          "OTT": { "wins": 6, "losses": 11, "ot": 1 }
+        }
+      },
+      "currentStats": {
+        "records": {
+          "OTT": { "wins": 6, "losses": 12, "ot": 1 },
+          "VGK": { "wins": 16, "losses": 4, "ot": 1 }
+        },
+        "streaks": {
+          "OTT": { "type": "LOSSES", "count": 3 },
+          "VGK": { "type": "WINS", "count": 2 }
+        },
+        "standings": {
+          "OTT": {
+            "divisionRank": "8",
+            "leagueRank": "31",
+            "pointsFromPlayoffSpot": "-10"
+          },
+          "VGK": {
+            "divisionRank": "1",
+            "leagueRank": "3",
+            "pointsFromPlayoffSpot": "+13"
+          }
+        }
+      },
+      "gameStats": {
+        "blocked": { "OTT": 12, "VGK": 24 },
+        "faceOffWinPercentage": { "OTT": "44.6", "VGK": "55.4" },
+        "giveaways": { "OTT": 6, "VGK": 10 },
+        "hits": { "OTT": 49, "VGK": 19 },
+        "pim": { "OTT": 8, "VGK": 4 },
+        "powerPlay": {
+          "OTT": { "goals": 1, "opportunities": 2, "percentage": "50.0" },
+          "VGK": { "goals": 1, "opportunities": 4, "percentage": "25.0" }
+        },
+        "shots": { "OTT": 40, "VGK": 36 },
+        "takeaways": { "OTT": 15, "VGK": 10 }
+      }
+    },
+    {
+      "status": { "state": "FINAL" },
+      "startTime": "2022-11-24T03:00:00Z",
+      "goals": [
+        {
+          "team": "SJS",
+          "period": "1",
+          "scorer": { "player": "Logan Couture", "seasonTotal": 11 },
+          "assists": [
+            { "player": "Nick Cicek", "seasonTotal": 2 },
+            { "player": "Matt Nieto", "seasonTotal": 4 }
+          ],
+          "min": 4,
+          "sec": 11
+        },
+        {
+          "team": "SEA",
+          "period": "1",
+          "scorer": { "player": "Andre Burakovsky", "seasonTotal": 5 },
+          "assists": [
+            { "player": "Vince Dunn", "seasonTotal": 9 },
+            { "player": "Jared McCann", "seasonTotal": 4 }
+          ],
+          "min": 9,
+          "sec": 44,
+          "strength": "PPG"
+        },
+        {
+          "team": "SJS",
+          "period": "1",
+          "scorer": { "player": "Timo Meier", "seasonTotal": 10 },
+          "assists": [
+            { "player": "Erik Karlsson", "seasonTotal": 19 },
+            { "player": "Logan Couture", "seasonTotal": 8 }
+          ],
+          "min": 18,
+          "sec": 53,
+          "strength": "PPG"
+        },
+        {
+          "team": "SEA",
+          "period": "2",
+          "scorer": { "player": "Vince Dunn", "seasonTotal": 3 },
+          "assists": [{ "player": "Matty Beniers", "seasonTotal": 7 }],
+          "min": 5,
+          "sec": 52
+        },
+        {
+          "team": "SEA",
+          "period": "2",
+          "scorer": { "player": "Ryan Donato", "seasonTotal": 2 },
+          "assists": [
+            { "player": "Daniel Sprong", "seasonTotal": 6 },
+            { "player": "Morgan Geekie", "seasonTotal": 5 }
+          ],
+          "min": 7,
+          "sec": 2
+        },
+        {
+          "team": "SEA",
+          "period": "2",
+          "scorer": { "player": "Jamie Oleksiak", "seasonTotal": 4 },
+          "assists": [
+            { "player": "Justin Schultz", "seasonTotal": 8 },
+            { "player": "Andre Burakovsky", "seasonTotal": 12 }
+          ],
+          "min": 10,
+          "sec": 11
+        },
+        {
+          "team": "SJS",
+          "period": "2",
+          "scorer": { "player": "Timo Meier", "seasonTotal": 11 },
+          "assists": [{ "player": "Tomas Hertl", "seasonTotal": 14 }],
+          "min": 13,
+          "sec": 39
+        },
+        {
+          "team": "SJS",
+          "period": "3",
+          "scorer": { "player": "Alexander Barabanov", "seasonTotal": 2 },
+          "assists": [
+            { "player": "Matt Benning", "seasonTotal": 6 },
+            { "player": "Marc-Edouard Vlasic", "seasonTotal": 5 }
+          ],
+          "min": 1,
+          "sec": 0
+        },
+        {
+          "team": "SEA",
+          "period": "3",
+          "scorer": { "player": "Oliver Bjorkstrand", "seasonTotal": 2 },
+          "assists": [
+            { "player": "Yanni Gourde", "seasonTotal": 8 },
+            { "player": "Brandon Tanev", "seasonTotal": 7 }
+          ],
+          "min": 2,
+          "sec": 48
+        },
+        {
+          "team": "SEA",
+          "period": "3",
+          "scorer": { "player": "Jaden Schwartz", "seasonTotal": 6 },
+          "assists": [
+            { "player": "Andre Burakovsky", "seasonTotal": 13 },
+            { "player": "Matty Beniers", "seasonTotal": 8 }
+          ],
+          "min": 3,
+          "sec": 47
+        },
+        {
+          "team": "SJS",
+          "period": "3",
+          "scorer": { "player": "Timo Meier", "seasonTotal": 12 },
+          "assists": [
+            { "player": "Kevin Labanc", "seasonTotal": 7 },
+            { "player": "Tomas Hertl", "seasonTotal": 15 }
+          ],
+          "min": 8,
+          "sec": 58
+        },
+        {
+          "team": "SEA",
+          "period": "3",
+          "scorer": { "player": "Matty Beniers", "seasonTotal": 6 },
+          "assists": [
+            { "player": "Jared McCann", "seasonTotal": 5 },
+            { "player": "Carson Soucy", "seasonTotal": 4 }
+          ],
+          "min": 15,
+          "sec": 16
+        },
+        {
+          "team": "SEA",
+          "period": "3",
+          "scorer": { "player": "Jaden Schwartz", "seasonTotal": 7 },
+          "assists": [],
+          "min": 19,
+          "sec": 25,
+          "emptyNet": true
+        }
+      ],
+      "scores": { "SJS": 5, "SEA": 8 },
+      "teams": {
+        "away": {
+          "abbreviation": "SJS",
+          "id": 28,
+          "locationName": "San Jose",
+          "shortName": "San Jose",
+          "teamName": "Sharks"
+        },
+        "home": {
+          "abbreviation": "SEA",
+          "id": 55,
+          "locationName": "Seattle",
+          "shortName": "Seattle",
+          "teamName": "Kraken"
+        }
+      },
+      "preGameStats": {
+        "records": {
+          "SEA": { "wins": 10, "losses": 5, "ot": 3 },
+          "SJS": { "wins": 7, "losses": 11, "ot": 3 }
+        }
+      },
+      "currentStats": {
+        "records": {
+          "SJS": { "wins": 7, "losses": 12, "ot": 3 },
+          "SEA": { "wins": 11, "losses": 5, "ot": 3 }
+        },
+        "streaks": {
+          "SJS": { "type": "LOSSES", "count": 1 },
+          "SEA": { "type": "WINS", "count": 3 }
+        },
+        "standings": {
+          "SJS": {
+            "divisionRank": "7",
+            "leagueRank": "30",
+            "pointsFromPlayoffSpot": "-3"
+          },
+          "SEA": {
+            "divisionRank": "2",
+            "leagueRank": "5",
+            "pointsFromPlayoffSpot": "+5"
+          }
+        }
+      },
+      "gameStats": {
+        "blocked": { "SJS": 18, "SEA": 15 },
+        "faceOffWinPercentage": { "SJS": "54.4", "SEA": "45.6" },
+        "giveaways": { "SJS": 3, "SEA": 6 },
+        "hits": { "SJS": 19, "SEA": 17 },
+        "pim": { "SJS": 8, "SEA": 6 },
+        "powerPlay": {
+          "SJS": { "goals": 1, "opportunities": 2, "percentage": "50.0" },
+          "SEA": { "goals": 1, "opportunities": 3, "percentage": "33.3" }
+        },
+        "shots": { "SJS": 26, "SEA": 27 },
+        "takeaways": { "SJS": 3, "SEA": 9 }
+      }
+    },
+    {
+      "status": { "state": "FINAL" },
+      "startTime": "2022-11-24T03:00:00Z",
+      "goals": [
+        {
+          "team": "VAN",
+          "period": "1",
+          "scorer": { "player": "Ilya Mikheyev", "seasonTotal": 5 },
+          "assists": [
+            { "player": "Elias Pettersson", "seasonTotal": 14 },
+            { "player": "Andrei Kuzmenko", "seasonTotal": 8 }
+          ],
+          "min": 0,
+          "sec": 21
+        },
+        {
+          "team": "COL",
+          "period": "1",
+          "scorer": { "player": "Mikko Rantanen", "seasonTotal": 12 },
+          "assists": [
+            { "player": "Devon Toews", "seasonTotal": 11 },
+            { "player": "Artturi Lehkonen", "seasonTotal": 9 }
+          ],
+          "min": 11,
+          "sec": 27
+        },
+        {
+          "team": "COL",
+          "period": "1",
+          "scorer": { "player": "Mikko Rantanen", "seasonTotal": 13 },
+          "assists": [
+            { "player": "J.T. Compher", "seasonTotal": 6 },
+            { "player": "Artturi Lehkonen", "seasonTotal": 10 }
+          ],
+          "min": 17,
+          "sec": 44,
+          "strength": "PPG"
+        },
+        {
+          "team": "VAN",
+          "period": "2",
+          "scorer": { "player": "Bo Horvat", "seasonTotal": 16 },
+          "assists": [
+            { "player": "Ethan Bear", "seasonTotal": 2 },
+            { "player": "J.T. Miller", "seasonTotal": 9 }
+          ],
+          "min": 10,
+          "sec": 34
+        },
+        {
+          "team": "COL",
+          "period": "2",
+          "scorer": { "player": "Cale Makar", "seasonTotal": 6 },
+          "assists": [
+            { "player": "Nathan MacKinnon", "seasonTotal": 22 },
+            { "player": "J.T. Compher", "seasonTotal": 7 }
+          ],
+          "min": 15,
+          "sec": 59,
+          "strength": "PPG"
+        },
+        {
+          "team": "VAN",
+          "period": "3",
+          "scorer": { "player": "Sheldon Dries", "seasonTotal": 2 },
+          "assists": [
+            { "player": "Oliver Ekman-Larsson", "seasonTotal": 7 },
+            { "player": "Brock Boeser", "seasonTotal": 11 }
+          ],
+          "min": 5,
+          "sec": 7
+        },
+        {
+          "team": "VAN",
+          "period": "3",
+          "scorer": { "player": "Ethan Bear", "seasonTotal": 2 },
+          "assists": [
+            { "player": "Oliver Ekman-Larsson", "seasonTotal": 8 },
+            { "player": "Sheldon Dries", "seasonTotal": 3 }
+          ],
+          "min": 12,
+          "sec": 0
+        }
+      ],
+      "scores": { "VAN": 4, "COL": 3 },
+      "teams": {
+        "away": {
+          "abbreviation": "VAN",
+          "id": 23,
+          "locationName": "Vancouver",
+          "shortName": "Vancouver",
+          "teamName": "Canucks"
+        },
+        "home": {
+          "abbreviation": "COL",
+          "id": 21,
+          "locationName": "Colorado",
+          "shortName": "Colorado",
+          "teamName": "Avalanche"
+        }
+      },
+      "preGameStats": {
+        "records": {
+          "VAN": { "wins": 6, "losses": 10, "ot": 3 },
+          "COL": { "wins": 11, "losses": 5, "ot": 1 }
+        }
+      },
+      "currentStats": {
+        "records": {
+          "VAN": { "wins": 7, "losses": 10, "ot": 3 },
+          "COL": { "wins": 11, "losses": 6, "ot": 1 }
+        },
+        "streaks": {
+          "VAN": { "type": "WINS", "count": 1 },
+          "COL": { "type": "LOSSES", "count": 1 }
+        },
+        "standings": {
+          "VAN": {
+            "divisionRank": "6",
+            "leagueRank": "27",
+            "pointsFromPlayoffSpot": "-3"
+          },
+          "COL": {
+            "divisionRank": "2",
+            "leagueRank": "7",
+            "pointsFromPlayoffSpot": "+3"
+          }
+        }
+      },
+      "gameStats": {
+        "blocked": { "VAN": 17, "COL": 9 },
+        "faceOffWinPercentage": { "VAN": "52.8", "COL": "47.2" },
+        "giveaways": { "VAN": 4, "COL": 6 },
+        "hits": { "VAN": 12, "COL": 12 },
+        "pim": { "VAN": 12, "COL": 10 },
+        "powerPlay": {
+          "VAN": { "goals": 0, "opportunities": 5, "percentage": "0.0" },
+          "COL": { "goals": 2, "opportunities": 6, "percentage": "33.3" }
+        },
+        "shots": { "VAN": 25, "COL": 36 },
+        "takeaways": { "VAN": 8, "COL": 6 }
+      }
+    }
+  ]
+}

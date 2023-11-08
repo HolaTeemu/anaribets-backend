@@ -1,0 +1,623 @@
+[
+  {
+    "date": { "raw": "2022-11-25", "pretty": "Fri Nov 25" },
+    "games": [
+      {
+        "status": { "state": "PREVIEW" },
+        "startTime": "2022-11-25T18:00:00Z",
+        "goals": [],
+        "scores": { "CAR": 0, "BOS": 0 },
+        "teams": {
+          "away": {
+            "abbreviation": "CAR",
+            "id": 12,
+            "locationName": "Carolina",
+            "shortName": "Carolina",
+            "teamName": "Hurricanes"
+          },
+          "home": {
+            "abbreviation": "BOS",
+            "id": 6,
+            "locationName": "Boston",
+            "shortName": "Boston",
+            "teamName": "Bruins"
+          }
+        },
+        "currentStats": {
+          "records": {
+            "CAR": { "wins": 10, "losses": 6, "ot": 4 },
+            "BOS": { "wins": 17, "losses": 3, "ot": 0 }
+          },
+          "streaks": {
+            "CAR": { "type": "LOSSES", "count": 1 },
+            "BOS": { "type": "LOSSES", "count": 1 }
+          },
+          "standings": {
+            "CAR": {
+              "divisionRank": "3",
+              "leagueRank": "12",
+              "pointsFromPlayoffSpot": "+1"
+            },
+            "BOS": {
+              "divisionRank": "1",
+              "leagueRank": "1",
+              "pointsFromPlayoffSpot": "+11"
+            }
+          }
+        }
+      },
+      {
+        "status": { "state": "PREVIEW" },
+        "startTime": "2022-11-25T19:00:00Z",
+        "goals": [],
+        "scores": { "COL": 0, "NSH": 0 },
+        "teams": {
+          "away": {
+            "abbreviation": "COL",
+            "id": 21,
+            "locationName": "Colorado",
+            "shortName": "Colorado",
+            "teamName": "Avalanche"
+          },
+          "home": {
+            "abbreviation": "NSH",
+            "id": 18,
+            "locationName": "Nashville",
+            "shortName": "Nashville",
+            "teamName": "Predators"
+          }
+        },
+        "currentStats": {
+          "records": {
+            "COL": { "wins": 11, "losses": 6, "ot": 1 },
+            "NSH": { "wins": 9, "losses": 9, "ot": 2 }
+          },
+          "streaks": {
+            "COL": { "type": "LOSSES", "count": 1 },
+            "NSH": { "type": "LOSSES", "count": 1 }
+          },
+          "standings": {
+            "COL": {
+              "divisionRank": "2",
+              "leagueRank": "7",
+              "pointsFromPlayoffSpot": "+3"
+            },
+            "NSH": {
+              "divisionRank": "6",
+              "leagueRank": "22",
+              "pointsFromPlayoffSpot": "0"
+            }
+          }
+        }
+      },
+      {
+        "status": { "state": "PREVIEW" },
+        "startTime": "2022-11-25T19:00:00Z",
+        "goals": [],
+        "scores": { "MTL": 0, "CHI": 0 },
+        "teams": {
+          "away": {
+            "abbreviation": "MTL",
+            "id": 8,
+            "locationName": "Montr\u00e9al",
+            "shortName": "Montr\u00e9al",
+            "teamName": "Canadiens"
+          },
+          "home": {
+            "abbreviation": "CHI",
+            "id": 16,
+            "locationName": "Chicago",
+            "shortName": "Chicago",
+            "teamName": "Blackhawks"
+          }
+        },
+        "currentStats": {
+          "records": {
+            "MTL": { "wins": 10, "losses": 9, "ot": 1 },
+            "CHI": { "wins": 6, "losses": 10, "ot": 3 }
+          },
+          "streaks": {
+            "MTL": { "type": "WINS", "count": 1 },
+            "CHI": { "type": "LOSSES", "count": 5 }
+          },
+          "standings": {
+            "MTL": {
+              "divisionRank": "6",
+              "leagueRank": "20",
+              "pointsFromPlayoffSpot": "-2"
+            },
+            "CHI": {
+              "divisionRank": "8",
+              "leagueRank": "29",
+              "pointsFromPlayoffSpot": "-5"
+            }
+          }
+        }
+      },
+      {
+        "status": { "state": "PREVIEW" },
+        "startTime": "2022-11-25T19:00:00Z",
+        "goals": [],
+        "scores": { "TOR": 0, "MIN": 0 },
+        "teams": {
+          "away": {
+            "abbreviation": "TOR",
+            "id": 10,
+            "locationName": "Toronto",
+            "shortName": "Toronto",
+            "teamName": "Maple Leafs"
+          },
+          "home": {
+            "abbreviation": "MIN",
+            "id": 30,
+            "locationName": "Minnesota",
+            "shortName": "Minnesota",
+            "teamName": "Wild"
+          }
+        },
+        "currentStats": {
+          "records": {
+            "TOR": { "wins": 11, "losses": 5, "ot": 5 },
+            "MIN": { "wins": 9, "losses": 8, "ot": 2 }
+          },
+          "streaks": {
+            "TOR": { "type": "WINS", "count": 1 },
+            "MIN": { "type": "WINS", "count": 2 }
+          },
+          "standings": {
+            "TOR": {
+              "divisionRank": "2",
+              "leagueRank": "6",
+              "pointsFromPlayoffSpot": "+4"
+            },
+            "MIN": {
+              "divisionRank": "5",
+              "leagueRank": "19",
+              "pointsFromPlayoffSpot": "0"
+            }
+          }
+        }
+      },
+      {
+        "status": { "state": "PREVIEW" },
+        "startTime": "2022-11-25T19:00:00Z",
+        "goals": [],
+        "scores": { "CGY": 0, "WSH": 0 },
+        "teams": {
+          "away": {
+            "abbreviation": "CGY",
+            "id": 20,
+            "locationName": "Calgary",
+            "shortName": "Calgary",
+            "teamName": "Flames"
+          },
+          "home": {
+            "abbreviation": "WSH",
+            "id": 15,
+            "locationName": "Washington",
+            "shortName": "Washington",
+            "teamName": "Capitals"
+          }
+        },
+        "currentStats": {
+          "records": {
+            "CGY": { "wins": 9, "losses": 7, "ot": 3 },
+            "WSH": { "wins": 8, "losses": 10, "ot": 3 }
+          },
+          "streaks": {
+            "CGY": { "type": "OT", "count": 1 },
+            "WSH": { "type": "WINS", "count": 1 }
+          },
+          "standings": {
+            "CGY": {
+              "divisionRank": "3",
+              "leagueRank": "15",
+              "pointsFromPlayoffSpot": "+1"
+            },
+            "WSH": {
+              "divisionRank": "7",
+              "leagueRank": "24",
+              "pointsFromPlayoffSpot": "-4"
+            }
+          }
+        }
+      },
+      {
+        "status": { "state": "PREVIEW" },
+        "startTime": "2022-11-25T20:00:00Z",
+        "goals": [],
+        "scores": { "OTT": 0, "ANA": 0 },
+        "teams": {
+          "away": {
+            "abbreviation": "OTT",
+            "id": 9,
+            "locationName": "Ottawa",
+            "shortName": "Ottawa",
+            "teamName": "Senators"
+          },
+          "home": {
+            "abbreviation": "ANA",
+            "id": 24,
+            "locationName": "Anaheim",
+            "shortName": "Anaheim",
+            "teamName": "Ducks"
+          }
+        },
+        "currentStats": {
+          "records": {
+            "OTT": { "wins": 6, "losses": 12, "ot": 1 },
+            "ANA": { "wins": 6, "losses": 13, "ot": 1 }
+          },
+          "streaks": {
+            "OTT": { "type": "LOSSES", "count": 3 },
+            "ANA": { "type": "WINS", "count": 1 }
+          },
+          "standings": {
+            "OTT": {
+              "divisionRank": "8",
+              "leagueRank": "31",
+              "pointsFromPlayoffSpot": "-10"
+            },
+            "ANA": {
+              "divisionRank": "8",
+              "leagueRank": "32",
+              "pointsFromPlayoffSpot": "-7"
+            }
+          }
+        }
+      },
+      {
+        "status": { "state": "PREVIEW" },
+        "startTime": "2022-11-25T22:30:00Z",
+        "goals": [],
+        "scores": { "PIT": 0, "PHI": 0 },
+        "teams": {
+          "away": {
+            "abbreviation": "PIT",
+            "id": 5,
+            "locationName": "Pittsburgh",
+            "shortName": "Pittsburgh",
+            "teamName": "Penguins"
+          },
+          "home": {
+            "abbreviation": "PHI",
+            "id": 4,
+            "locationName": "Philadelphia",
+            "shortName": "Philadelphia",
+            "teamName": "Flyers"
+          }
+        },
+        "currentStats": {
+          "records": {
+            "PIT": { "wins": 10, "losses": 7, "ot": 3 },
+            "PHI": { "wins": 7, "losses": 8, "ot": 5 }
+          },
+          "streaks": {
+            "PIT": { "type": "WINS", "count": 4 },
+            "PHI": { "type": "OT", "count": 1 }
+          },
+          "standings": {
+            "PIT": {
+              "divisionRank": "4",
+              "leagueRank": "13",
+              "pointsFromPlayoffSpot": "0"
+            },
+            "PHI": {
+              "divisionRank": "6",
+              "leagueRank": "23",
+              "pointsFromPlayoffSpot": "-4"
+            }
+          }
+        }
+      },
+      {
+        "status": { "state": "PREVIEW" },
+        "startTime": "2022-11-26T01:00:00Z",
+        "goals": [],
+        "scores": { "SEA": 0, "VGK": 0 },
+        "teams": {
+          "away": {
+            "abbreviation": "SEA",
+            "id": 55,
+            "locationName": "Seattle",
+            "shortName": "Seattle",
+            "teamName": "Kraken"
+          },
+          "home": {
+            "abbreviation": "VGK",
+            "id": 54,
+            "locationName": "Vegas",
+            "shortName": "Vegas",
+            "teamName": "Golden Knights"
+          }
+        },
+        "currentStats": {
+          "records": {
+            "SEA": { "wins": 11, "losses": 5, "ot": 3 },
+            "VGK": { "wins": 16, "losses": 4, "ot": 1 }
+          },
+          "streaks": {
+            "SEA": { "type": "WINS", "count": 3 },
+            "VGK": { "type": "WINS", "count": 2 }
+          },
+          "standings": {
+            "SEA": {
+              "divisionRank": "2",
+              "leagueRank": "5",
+              "pointsFromPlayoffSpot": "+5"
+            },
+            "VGK": {
+              "divisionRank": "1",
+              "leagueRank": "3",
+              "pointsFromPlayoffSpot": "+13"
+            }
+          }
+        }
+      },
+      {
+        "status": { "state": "PREVIEW" },
+        "startTime": "2022-11-26T01:00:00Z",
+        "goals": [],
+        "scores": { "ARI": 0, "DET": 0 },
+        "teams": {
+          "away": {
+            "abbreviation": "ARI",
+            "id": 53,
+            "locationName": "Arizona",
+            "shortName": "Arizona",
+            "teamName": "Coyotes"
+          },
+          "home": {
+            "abbreviation": "DET",
+            "id": 17,
+            "locationName": "Detroit",
+            "shortName": "Detroit",
+            "teamName": "Red Wings"
+          }
+        },
+        "currentStats": {
+          "records": {
+            "ARI": { "wins": 7, "losses": 9, "ot": 2 },
+            "DET": { "wins": 10, "losses": 5, "ot": 4 }
+          },
+          "streaks": {
+            "ARI": { "type": "WINS", "count": 1 },
+            "DET": { "type": "WINS", "count": 3 }
+          },
+          "standings": {
+            "ARI": {
+              "divisionRank": "7",
+              "leagueRank": "26",
+              "pointsFromPlayoffSpot": "-4"
+            },
+            "DET": {
+              "divisionRank": "3",
+              "leagueRank": "9",
+              "pointsFromPlayoffSpot": "+1"
+            }
+          }
+        }
+      },
+      {
+        "status": { "state": "PREVIEW" },
+        "startTime": "2022-11-26T01:00:00Z",
+        "goals": [],
+        "scores": { "NYI": 0, "CBJ": 0 },
+        "teams": {
+          "away": {
+            "abbreviation": "NYI",
+            "id": 2,
+            "locationName": "New York",
+            "shortName": "NY Islanders",
+            "teamName": "Islanders"
+          },
+          "home": {
+            "abbreviation": "CBJ",
+            "id": 29,
+            "locationName": "Columbus",
+            "shortName": "Columbus",
+            "teamName": "Blue Jackets"
+          }
+        },
+        "currentStats": {
+          "records": {
+            "NYI": { "wins": 13, "losses": 8, "ot": 0 },
+            "CBJ": { "wins": 7, "losses": 11, "ot": 1 }
+          },
+          "streaks": {
+            "NYI": { "type": "WINS", "count": 2 },
+            "CBJ": { "type": "LOSSES", "count": 1 }
+          },
+          "standings": {
+            "NYI": {
+              "divisionRank": "2",
+              "leagueRank": "10",
+              "pointsFromPlayoffSpot": "+3"
+            },
+            "CBJ": {
+              "divisionRank": "8",
+              "leagueRank": "28",
+              "pointsFromPlayoffSpot": "-8"
+            }
+          }
+        }
+      },
+      {
+        "status": { "state": "PREVIEW" },
+        "startTime": "2022-11-26T01:00:00Z",
+        "goals": [],
+        "scores": { "NJD": 0, "BUF": 0 },
+        "teams": {
+          "away": {
+            "abbreviation": "NJD",
+            "id": 1,
+            "locationName": "New Jersey",
+            "shortName": "New Jersey",
+            "teamName": "Devils"
+          },
+          "home": {
+            "abbreviation": "BUF",
+            "id": 7,
+            "locationName": "Buffalo",
+            "shortName": "Buffalo",
+            "teamName": "Sabres"
+          }
+        },
+        "currentStats": {
+          "records": {
+            "NJD": { "wins": 16, "losses": 4, "ot": 0 },
+            "BUF": { "wins": 9, "losses": 11, "ot": 0 }
+          },
+          "streaks": {
+            "NJD": { "type": "LOSSES", "count": 1 },
+            "BUF": { "type": "WINS", "count": 2 }
+          },
+          "standings": {
+            "NJD": {
+              "divisionRank": "1",
+              "leagueRank": "2",
+              "pointsFromPlayoffSpot": "+9"
+            },
+            "BUF": {
+              "divisionRank": "7",
+              "leagueRank": "25",
+              "pointsFromPlayoffSpot": "-5"
+            }
+          }
+        }
+      },
+      {
+        "status": { "state": "PREVIEW" },
+        "startTime": "2022-11-26T01:00:00Z",
+        "goals": [],
+        "scores": { "STL": 0, "TBL": 0 },
+        "teams": {
+          "away": {
+            "abbreviation": "STL",
+            "id": 19,
+            "locationName": "St. Louis",
+            "shortName": "St Louis",
+            "teamName": "Blues"
+          },
+          "home": {
+            "abbreviation": "TBL",
+            "id": 14,
+            "locationName": "Tampa Bay",
+            "shortName": "Tampa Bay",
+            "teamName": "Lightning"
+          }
+        },
+        "currentStats": {
+          "records": {
+            "STL": { "wins": 10, "losses": 9, "ot": 0 },
+            "TBL": { "wins": 11, "losses": 7, "ot": 1 }
+          },
+          "streaks": {
+            "STL": { "type": "LOSSES", "count": 1 },
+            "TBL": { "type": "LOSSES", "count": 1 }
+          },
+          "standings": {
+            "STL": {
+              "divisionRank": "4",
+              "leagueRank": "18",
+              "pointsFromPlayoffSpot": "0"
+            },
+            "TBL": {
+              "divisionRank": "4",
+              "leagueRank": "11",
+              "pointsFromPlayoffSpot": "0"
+            }
+          }
+        }
+      },
+      {
+        "status": { "state": "PREVIEW" },
+        "startTime": "2022-11-26T01:30:00Z",
+        "goals": [],
+        "scores": { "WPG": 0, "DAL": 0 },
+        "teams": {
+          "away": {
+            "abbreviation": "WPG",
+            "id": 52,
+            "locationName": "Winnipeg",
+            "shortName": "Winnipeg",
+            "teamName": "Jets"
+          },
+          "home": {
+            "abbreviation": "DAL",
+            "id": 25,
+            "locationName": "Dallas",
+            "shortName": "Dallas",
+            "teamName": "Stars"
+          }
+        },
+        "currentStats": {
+          "records": {
+            "WPG": { "wins": 11, "losses": 6, "ot": 1 },
+            "DAL": { "wins": 12, "losses": 5, "ot": 3 }
+          },
+          "streaks": {
+            "WPG": { "type": "LOSSES", "count": 1 },
+            "DAL": { "type": "WINS", "count": 1 }
+          },
+          "standings": {
+            "WPG": {
+              "divisionRank": "3",
+              "leagueRank": "8",
+              "pointsFromPlayoffSpot": "+3"
+            },
+            "DAL": {
+              "divisionRank": "1",
+              "leagueRank": "4",
+              "pointsFromPlayoffSpot": "+7"
+            }
+          }
+        }
+      },
+      {
+        "status": { "state": "PREVIEW" },
+        "startTime": "2022-11-26T03:30:00Z",
+        "goals": [],
+        "scores": { "LAK": 0, "SJS": 0 },
+        "teams": {
+          "away": {
+            "abbreviation": "LAK",
+            "id": 26,
+            "locationName": "Los Angeles",
+            "shortName": "Los Angeles",
+            "teamName": "Kings"
+          },
+          "home": {
+            "abbreviation": "SJS",
+            "id": 28,
+            "locationName": "San Jose",
+            "shortName": "San Jose",
+            "teamName": "Sharks"
+          }
+        },
+        "currentStats": {
+          "records": {
+            "LAK": { "wins": 11, "losses": 9, "ot": 2 },
+            "SJS": { "wins": 7, "losses": 12, "ot": 3 }
+          },
+          "streaks": {
+            "LAK": { "type": "LOSSES", "count": 1 },
+            "SJS": { "type": "LOSSES", "count": 1 }
+          },
+          "standings": {
+            "LAK": {
+              "divisionRank": "4",
+              "leagueRank": "17",
+              "pointsFromPlayoffSpot": "+4"
+            },
+            "SJS": {
+              "divisionRank": "7",
+              "leagueRank": "30",
+              "pointsFromPlayoffSpot": "-3"
+            }
+          }
+        }
+      }
+    ]
+  }
+]
