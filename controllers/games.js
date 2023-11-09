@@ -133,12 +133,12 @@ gamesRouter.get("/ongoing", (req, res) => {
     });
 });
 
-// Get upcoming games2
+// Get upcoming games new version with new api endpoint
 gamesRouter.get("/upcoming", (req, res) => {
   const today = new Date();
   const startDate = today.toISOString().split("T")[0];
   gamesService
-    .getUpcomingGames()
+    .getUpcomingGames(startDate)
     .then((response) => {
       if (response.data.length === 0) {
         //const data = parseUpcomingGamesData(testidata_upcoming[0].games); // testidata
@@ -186,11 +186,9 @@ gamesRouter.get("/upcoming", (req, res) => {
 // Get results of last nights games
 gamesRouter.get("/results", (req, res) => {
   const yesterday = new Date();
-
   yesterday.setDate(yesterday.getDate() - 1);
   yesterday.toDateString();
   const yesterdayDateString = yesterday.toISOString().split("T")[0];
-  console.log(yesterdayDateString);
 
   gamesService.getResults(yesterdayDateString).then((response) => {
     if (response.data.length === 0) {

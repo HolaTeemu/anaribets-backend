@@ -12,8 +12,8 @@ const getUpcomingGamesOLD = (endDate, startDate = endDate) => {
 }
 
 // New version of getUpcomingGames using the new API endpoint (8.11.23)
-const getUpcomingGames = () => {
-    return axios.get(`${baseUrl2}/v1/schedule/now`);
+const getUpcomingGames = (date) => {
+    return axios.get(`${baseUrl2}/v1/schedule/${date}`);
 }
 
 const getResults = (date) => {
