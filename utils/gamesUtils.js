@@ -92,6 +92,7 @@ const parseResultsData = (data) => {
         gameId: game.id,
         overtime: game.gameOutcome.lastPeriodType === "OT" ? true : false,
         shootout: game.gameOutcome.lastPeriodType === "SO" ? true : false,
+        highlightVideo: game.threeMinRecap,
       });
     }
   });
