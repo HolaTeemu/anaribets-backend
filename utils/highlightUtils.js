@@ -52,15 +52,15 @@ function scheduleHighlightVideoFetching() {
 
   // Calculate the time until 9 AM
   let timeUntil9AM;
-  if (currentHour < 9 || (currentHour === 9 && currentMinutes < 00)) {
+  if (currentHour < 9 || (currentHour === 9 && currentMinutes < 0)) {
     const targetTime = new Date(now);
-    targetTime.setHours(9, 00, 0, 0);
+    targetTime.setHours(9, 0, 0, 0);
     timeUntil9AM = targetTime - now;
     console.log(timeUntil9AM);
   } else {
     const nextDay = new Date(now);
     nextDay.setDate(nextDay.getDate() + 1);
-    nextDay.setHours(9, 00, 0, 0);
+    nextDay.setHours(9, 0, 0, 0);
     timeUntil9AM = nextDay - now;
     console.log(timeUntil9AM);
   }
