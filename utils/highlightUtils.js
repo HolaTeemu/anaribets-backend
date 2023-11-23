@@ -24,19 +24,24 @@ const checkHighlightVideo = () => {
           const month = new Date(game.startTime).toLocaleString("default", {
             month: "long",
           });
-          const highlightReelLink = `https://www.nhl.com${game.highlightVideo}`;
 
-          Result.findOneAndUpdate(
-            { gameId: game.gameId, highlightReel: "" },
-            { highlightReel: highlightReelLink },
-            { new: true }
-          )
-            .then((updatedResult) => {
-              console.log(updatedResult);
-            })
-            .catch((error) => {
-              console.log(error);
-            });
+          if (game.highlightVideo !== "") {
+            const highlightReelLink = `https://www.nhl.com${game.highlightVideo}`;
+
+            Result.findOneAndUpdate(
+              { gameId: game.gameId, highlightReel: "" },
+              { highlightReel: highlightReelLink },
+              { new: true }
+            )
+              .then((updatedResult) => {
+                console.log(updatedResult);
+              })
+              .catch((error) => {
+                console.log(error);
+              });
+          } else {
+            console.log("No highlight reel found for this game");
+          }
         });
       }
     })
