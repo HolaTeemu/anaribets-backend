@@ -1,0 +1,162 @@
+[
+  {
+    "id": 1,
+    "teamName": "Devils",
+    "abbrev": "NJD"
+  },
+  {
+    "id": 2,
+    "teamName": "Islanders",
+    "abbrev": "NYI"
+  },
+  {
+    "id": 3,
+    "teamName": "Rangers",
+    "abbrev": "NYR"
+  },
+  {
+    "id": 4,
+    "teamName": "Flyers",
+    "abbrev": "PHI"
+  },
+  {
+    "id": 5,
+    "teamName": "Penguins",
+    "abbrev": "PIT"
+  },
+  {
+    "id": 6,
+    "teamName": "Bruins",
+    "abbrev": "BOS"
+  },
+  {
+    "id": 7,
+    "teamName": "Sabres",
+    "abbrev": "BUF"
+  },
+  {
+    "id": 8,
+    "teamName": "Canadiens",
+    "abbrev": "MTL"
+  },
+  {
+    "id": 9,
+    "teamName": "Senators",
+    "abbrev": "OTT"
+  },
+  {
+    "id": 10,
+    "teamName": "Maple Leafs",
+    "abbrev": "TOR"
+  },
+  {
+    "id": 12,
+    "teamName": "Hurricanes",
+    "abbrev": "CAR"
+  },
+  {
+    "id": 13,
+    "teamName": "Panthers",
+    "abbrev": "FLA"
+  },
+  {
+    "id": 14,
+    "teamName": "Lightning",
+    "abbrev": "TBL"
+  },
+  {
+    "id": 15,
+    "teamName": "Capitals",
+    "abbrev": "WSH"
+  },
+  {
+    "id": 16,
+    "teamName": "Blackhawks",
+    "abbrev": "CHI"
+  },
+  {
+    "id": 17,
+    "teamName": "Red Wings",
+    "abbrev": "DET"
+  },
+  {
+    "id": 18,
+    "teamName": "Predators",
+    "abbrev": "NSH"
+  },
+  {
+    "id": 19,
+    "teamName": "Blues",
+    "abbrev": "STL"
+  },
+  {
+    "id": 20,
+    "teamName": "Flames",
+    "abbrev": "CGY"
+  },
+  {
+    "id": 21,
+    "teamName": "Avalanche",
+    "abbrev": "COL"
+  },
+  {
+    "id": 22,
+    "teamName": "Oilers",
+    "abbrev": "EDM"
+  },
+  {
+    "id": 23,
+    "teamName": "Canucks",
+    "abbrev": "VAN"
+  },
+  {
+    "id": 24,
+    "teamName": "Ducks",
+    "abbrev": "ANA"
+  },
+  {
+    "id": 25,
+    "teamName": "Stars",
+    "abbrev": "DAL"
+  },
+  {
+    "id": 26,
+    "teamName": "Kings",
+    "abbrev": "LAK"
+  },
+  {
+    "id": 28,
+    "teamName": "Sharks",
+    "abbrev": "SJS"
+  },
+  {
+    "id": 29,
+    "teamName": "Blue Jackets",
+    "abbrev": "CBJ"
+  },
+  {
+    "id": 30,
+    "teamName": "Wild",
+    "abbrev": "MIN"
+  },
+  {
+    "id": 52,
+    "teamName": "Jets",
+    "abbrev": "WPG"
+  },
+  {
+    "id": 53,
+    "teamName": "Coyotes",
+    "abbrev": "ARI"
+  },
+  {
+    "id": 54,
+    "teamName": "Golden Knights",
+    "abbrev": "VGK"
+  },
+  {
+    "id": 55,
+    "teamName": "Kraken",
+    "abbrev": "SEA"
+  }
+]
