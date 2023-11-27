@@ -55,19 +55,17 @@ function scheduleHighlightVideoFetching() {
   const currentHour = now.getHours();
   const currentMinutes = now.getMinutes();
 
-  // Calculate the time until 9 AM
-  let timeUntil9AM;
-  if (currentHour < 9 || (currentHour === 9 && currentMinutes < 0)) {
+  // Calculate the time until 7 PM
+  let timeUntil7PM;
+  if (currentHour < 9 || (currentHour === 19 && currentMinutes < 0)) {
     const targetTime = new Date(now);
-    targetTime.setHours(9, 0, 0, 0);
-    timeUntil9AM = targetTime - now;
-    console.log(timeUntil9AM);
+    targetTime.setHours(19, 0, 0, 0);
+    timeUntil7PM = targetTime - now;
   } else {
     const nextDay = new Date(now);
     nextDay.setDate(nextDay.getDate() + 1);
-    nextDay.setHours(9, 0, 0, 0);
-    timeUntil9AM = nextDay - now;
-    console.log(timeUntil9AM);
+    nextDay.setHours(19, 0, 0, 0);
+    timeUntil7PM = nextDay - now;
   }
 
   // Schedule the first execution
