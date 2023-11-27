@@ -56,16 +56,16 @@ function scheduleHighlightVideoFetching() {
   const currentMinutes = now.getMinutes();
 
   // Calculate the time until 7 PM
-  let timeUntil7PM;
-  if (currentHour < 9 || (currentHour === 19 && currentMinutes < 0)) {
+  let timeUntil1930;
+  if (currentHour < 9 || (currentHour === 19 && currentMinutes < 30)) {
     const targetTime = new Date(now);
-    targetTime.setHours(19, 0, 0, 0);
-    timeUntil7PM = targetTime - now;
+    targetTime.setHours(19, 30, 0, 0);
+    timeUntil1930 = targetTime - now;
   } else {
     const nextDay = new Date(now);
     nextDay.setDate(nextDay.getDate() + 1);
-    nextDay.setHours(19, 0, 0, 0);
-    timeUntil7PM = nextDay - now;
+    nextDay.setHours(19, 30, 0, 0);
+    timeUntil1930 = nextDay - now;
   }
 
   // Schedule the first execution
@@ -74,7 +74,7 @@ function scheduleHighlightVideoFetching() {
 
     // Schedule subsequent executions every two hours (7,200,000 milliseconds)
     setInterval(checkHighlightVideo, 2 * 60 * 60 * 1000);
-  }, timeUntil9AM);
+  }, timeUntil1930);
 }
 
 // eslint-disable-next-line import/no-anonymous-default-export
